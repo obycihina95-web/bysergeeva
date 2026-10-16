@@ -38,9 +38,15 @@ a[href^="#skin-"].os-on{box-shadow:0 0 0 2px #FFF8C7,0 0 0 3.5px #24334C}
 .os-q:hover .tn-atom{padding-left:6px}
 .os-plus .tn-atom{display:inline-block;transition:transform .25s cubic-bezier(.2,.8,.2,1)}
 .os-plus.os-open .tn-atom{transform:rotate(45deg)}
+/* Тильда ставит группам border-style:solid без ширины, браузер рисует невидимую рамку 3px,
+   и ряды карточек, папок и виджетов перестают помещаться. Группы с настоящей рамкой
+   задают её своим правилом с id, оно сильнее. */
+.t396 .tn-group > .tn-molecule{border-width:0}
 /* карточки услуг: описание сменяется тегами */
 .tn-molecule:has(> .os-desc){display:grid!important;align-content:start}
-.tn-molecule:has(> .os-desc) > .tn-elem{grid-area:1/1}
+.tn-molecule:has(> .os-desc) > .tn-elem{grid-area:1/1;align-self:start}
+.os-desc .tn-atom,.os-tags .tn-atom{vertical-align:top}
+.tn-molecule:has(> .t396__group > .tn-molecule > .os-desc) > .t396__group:last-child{margin-top:auto!important}
 .os-desc{transition:opacity .2s}
 .os-tags{opacity:0;transform:translateY(6px);transition:opacity .2s,transform .2s}
 .os-svcplus .tn-atom{transition:transform .2s}

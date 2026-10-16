@@ -22,7 +22,8 @@ FONT = 'Gilroy'
 WIDE = (1120, 920, 600, 440, 320)      # окно .wide
 NORMAL = (880, 880, 600, 440, 320)     # обычное окно
 WIDE_IN = (1064, 864, 564, 404, 284)   # ширина содержимого широкого окна
-BODY_PAD = ('26px 28px 32px 28px',) * 2 + ('20px 18px 26px 18px',) * 3
+# по бокам 27 (на телефоне 17), а не 28: у окна рамка 1px, и тогда внутри остаётся ровно WIDE_IN
+BODY_PAD = ('26px 27px 32px 27px',) * 2 + ('20px 17px 26px 17px',) * 3
 
 
 def bp(v):
@@ -93,10 +94,12 @@ def T(text, fs=14, fw=400, color=INK, lh=1.5, ls=None, upper=False, w='fill', h=
 
 
 def BTN(caption, link, dark=True, cls=None, w='hug', blank=True):
+    # высоту кнопке дают вертикальные отступы: в автолейауте Тильда ставит height:auto
     d = {'elem_type': 'button', 'caption': caption, 'link': link, 'textfit': 'autowidth' if w == 'hug' else 'fixedsize',
-         'fontfamily': FONT, 'fontsize': '12', 'fontweight': '400', 'lettercase': 'uppercase', 'letterspacing': '0.36',
-         'padding': '0px 16px 0px 16px', 'align': 'center', 'borderradius': '12px 12px 12px 12px', 'speedhover': '0.2'}
-    size(d, w if w != 'hug' else 'hug', 40)
+         'fontfamily': FONT, 'fontsize': '13', 'fontweight': '400', 'lettercase': 'uppercase', 'letterspacing': '0.36',
+         'padding': '14px 24px 14px 24px' if w == 'hug' else '0px 24px 0px 24px', 'align': 'center',
+         'borderradius': '12px 12px 12px 12px', 'speedhover': '0.2'}
+    size(d, w if w != 'hug' else 'hug', 48)
     if dark:
         d.update(color=ACTT, bgcolor=ACT, bgcolorhover=HOV)
     else:
