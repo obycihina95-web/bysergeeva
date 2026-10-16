@@ -3,10 +3,14 @@
 <style>
 /* Макет: «рабочий стол» как на bysergeevadesign.ru — профиль слева, папки-кейсы справа, виджеты снизу, док по центру.
    Темы и цвета взяты с сайта Оксаны. Тема выбирается переключателем, от светлой/тёмной темы просмотрщика не зависит. */
+@font-face{font-family:"Gilroy";src:url("fonts/Gilroy-Regular.woff") format("woff");font-weight:400;font-display:swap}
+@font-face{font-family:"Gilroy";src:url("fonts/Gilroy-Medium.woff") format("woff");font-weight:500;font-display:swap}
+@font-face{font-family:"Gilroy";src:url("fonts/Gilroy-Semibold.woff") format("woff");font-weight:600;font-display:swap}
+@font-face{font-family:"Gilroy";src:url("fonts/Gilroy-Bold.woff") format("woff");font-weight:700;font-display:swap}
 :root{
   --bg:#92ACDD; --page-text:#FFF8C7; --panel:#FFF8C7; --ink:#24334C; --muted:#52647C; --line:#6F8FBE;
   --folder:#FFF8C7; --folder2:#F4EBAA; --folder3:#E9DD8E; --active:#24334C; --active-text:#FFF8C7;
-  --font:"Helvetica Neue", Arial, Helvetica, sans-serif;
+  --font:"Gilroy", "Helvetica Neue", Arial, sans-serif;
   --r:18px;
   color-scheme:light;
 }
@@ -45,7 +49,7 @@ button{font:inherit;color:inherit;cursor:pointer}
 .photo{aspect-ratio:4/3;max-width:100%;background:linear-gradient(140deg,#c0b3aa,#a3aaa9 55%,#7c6f72);position:relative;display:grid;place-items:end start;padding:12px}
 .photo span{background:color-mix(in srgb, var(--panel) 85%, transparent);color:var(--ink);border-radius:8px;padding:5px 9px;font-size:10px;text-transform:uppercase}
 .profile-body{padding:22px 20px 20px;display:flex;flex-direction:column;gap:14px}
-.profile h1{margin:0;font-size:30px;line-height:.92;letter-spacing:-.06em;font-weight:800;text-transform:uppercase}
+.profile h1{margin:0;font-size:30px;line-height:.92;letter-spacing:-.06em;font-weight:700;text-transform:uppercase}
 .role{font-size:10px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);padding-bottom:14px;border-bottom:1px solid var(--line)}
 .profile p{margin:0;font-size:13px;color:var(--muted)}
 .links{display:flex;gap:18px;font-size:11px;text-transform:uppercase}
@@ -79,11 +83,14 @@ button{font:inherit;color:inherit;cursor:pointer}
 .widget .up{display:flex;justify-content:space-between}
 .widget .up button{background:none;border:0;padding:0;font-size:11px;text-transform:uppercase;color:var(--ink)}
 .rows{list-style:none;margin:0;padding:0}
-.rows li{display:flex;justify-content:space-between;gap:12px;padding:7px 0;border-bottom:1px solid var(--line);font-size:12px}
+.rows li{display:flex;justify-content:space-between;align-items:baseline;gap:12px;padding:7px 0;border-bottom:1px solid var(--line);font-size:12px;line-height:1.35}
+.rows li span{min-width:0}
 .rows li span:last-child{white-space:nowrap;font-variant-numeric:tabular-nums}
+.rows.steps li{display:grid;grid-template-columns:22px minmax(0,1fr);gap:8px}
 .rows.steps li span:first-child{color:var(--muted);font-variant-numeric:tabular-nums}
-.big{font-size:44px;line-height:.9;font-weight:800;letter-spacing:-.06em}
-.status-title{font-size:24px;line-height:1;font-weight:800;letter-spacing:-.05em;text-transform:uppercase}
+.rows.steps li span:last-child{white-space:normal}
+.big{font-size:44px;line-height:.9;font-weight:700;letter-spacing:-.06em}
+.status-title{font-size:24px;line-height:1;font-weight:700;letter-spacing:-.05em;text-transform:uppercase}
 .widget p{margin:0;font-size:12px;color:var(--muted)}
 .dot{display:inline-block;width:8px;height:8px;border-radius:50%;background:#3fae5a;margin-right:6px;box-shadow:0 0 0 3px rgb(63 174 90 / .2)}
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;background:var(--active);color:var(--active-text);border:0;border-radius:12px;padding:11px 16px;font-size:12px;text-transform:uppercase;letter-spacing:.03em;text-decoration:none;margin-top:auto}
@@ -107,7 +114,7 @@ dialog::backdrop{background:color-mix(in srgb, var(--bg) 55%, rgb(0 0 0 / .35));
 .w-close{width:30px;height:30px;border-radius:9px;border:1px solid var(--line);background:none;color:var(--ink);display:grid;place-items:center}
 .w-close svg{width:14px;height:14px;stroke:currentColor;stroke-width:1.6;fill:none}
 .w-body{overflow:auto;padding:26px 28px 32px;display:flex;flex-direction:column;gap:18px}
-.w-body h2{margin:0;font-size:clamp(34px,5vw,60px);line-height:.88;letter-spacing:-.065em;font-weight:800;text-transform:uppercase;text-wrap:balance}
+.w-body h2{margin:0;font-size:clamp(34px,5vw,60px);line-height:.88;letter-spacing:-.065em;font-weight:700;text-transform:uppercase;text-wrap:balance}
 .w-body h3{margin:6px 0 0;font-size:17px;letter-spacing:-.02em}
 .w-body p,.w-body li{font-size:14px;line-height:1.55;max-width:66ch}
 .w-body p{margin:0}
@@ -129,7 +136,7 @@ table.price td:last-child{text-align:right;white-space:nowrap;font-weight:700;fo
 table.price small{display:block;font-weight:400;color:var(--muted)}
 ol.flow{list-style:none;margin:0;padding:0;counter-reset:s}
 ol.flow li{counter-increment:s;display:grid;grid-template-columns:44px 1fr;gap:2px 12px;padding:12px 0;border-bottom:1px solid var(--line);max-width:none}
-ol.flow li::before{content:counter(s, decimal-leading-zero);font-weight:800;font-size:18px;letter-spacing:-.04em;grid-row:span 2}
+ol.flow li::before{content:counter(s, decimal-leading-zero);font-weight:700;font-size:18px;letter-spacing:-.04em;grid-row:span 2}
 ol.flow b{font-size:14px}
 ol.flow span{color:var(--muted);font-size:13px}
 .note{background:var(--active);color:var(--active-text);border-radius:12px;padding:16px 18px;display:flex;flex-direction:column;gap:6px}
@@ -144,9 +151,106 @@ details p{padding-bottom:14px}
 .contacts div{display:flex;justify-content:space-between;gap:12px;padding:12px 0;border-bottom:1px solid var(--line);font-size:14px}
 .contacts b{user-select:all}
 
-@media (max-width:1100px){
+/* загрузка, как на сайте для работодателя */
+.boot{position:fixed;z-index:100;inset:0;background:var(--ink);color:var(--panel);display:grid;place-items:center;transition:opacity .5s}
+.boot.hide{opacity:0;pointer-events:none}
+.boot-inner{text-align:center;display:flex;flex-direction:column;align-items:center}
+.boot-mono{width:92px;height:92px;border:1.5px solid currentColor;border-radius:50%;display:grid;place-items:center;margin-bottom:22px;font-weight:700;font-size:30px;letter-spacing:-.08em;position:relative;opacity:0;transform:scale(.72) rotate(-8deg);animation:logoIn .8s .18s cubic-bezier(.2,.8,.2,1) forwards}
+.boot-mono::before{content:"";position:absolute;inset:7px;border:1px solid currentColor;border-radius:50%;opacity:.28}
+.boot-mono::after{content:"✦";position:absolute;right:-9px;top:4px;font-size:13px;opacity:0;animation:spark 1.5s .85s ease-in-out infinite}
+.boot b{font-size:15px;letter-spacing:.08em;margin-bottom:5px;opacity:0;animation:fadeUp .5s .75s ease forwards}
+.boot small{font-size:9px;letter-spacing:.14em;text-transform:uppercase;opacity:0;animation:fadeUp .5s .95s ease forwards}
+.boot .loader{width:260px;max-width:70vw;height:1px;background:color-mix(in srgb, currentColor 35%, transparent);margin:22px auto 12px;overflow:hidden;opacity:0;animation:fadeUp .35s 1.15s ease forwards}
+.boot .loader::after{content:"";display:block;height:100%;background:currentColor;animation:load 1s 1.25s ease both}
+.boot .ready{animation-delay:2s}
+@keyframes logoIn{to{opacity:1;transform:none}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+@keyframes spark{0%,100%{opacity:0;transform:scale(.4)}50%{opacity:1;transform:scale(1.2) rotate(20deg)}}
+@keyframes load{from{width:0}to{width:100%}}
+
+/* появление окна */
+dialog[open]{animation:winIn .28s cubic-bezier(.2,.8,.2,1)}
+@keyframes winIn{from{opacity:0;transform:translateY(14px) scale(.97)}to{opacity:1;transform:none}}
+.anim > *{opacity:0;animation:fadeUp .5s cubic-bezier(.2,.8,.2,1) forwards;animation-delay:calc(var(--i, 0) * 60ms + 120ms)}
+
+/* услуги карточками */
+dialog.wide{width:min(1120px, calc(100vw - 32px))}
+.svc-head{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,420px);gap:24px;align-items:end}
+.svc-head p{font-size:13px;color:var(--muted)}
+.svc-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));grid-auto-flow:dense;gap:12px}
+.svc-card{position:relative;display:flex;flex-direction:column;min-width:0;min-height:236px;padding:18px 18px 16px;border:1px solid var(--line);border-radius:16px;background:color-mix(in srgb, var(--panel) 88%, var(--bg));text-align:left;color:var(--ink);transition:transform .18s, border-color .18s}
+button.svc-card{font:inherit}
+.svc-top{display:flex;justify-content:space-between;align-items:center;font-size:10px;color:var(--muted);font-variant-numeric:tabular-nums}
+.svc-plus{width:24px;height:24px;border:1px solid var(--line);border-radius:50%;display:grid;place-items:center;font-size:14px;line-height:1;transition:transform .2s}
+.svc-card h3{font-size:19px;line-height:1.05;letter-spacing:-.03em;margin:20px 0 10px;font-weight:600}
+.svc-body{display:grid;flex:1;align-content:start}
+.svc-body > *{grid-area:1/1}
+.svc-desc{font-size:12px;line-height:1.5;color:var(--muted);margin:0;transition:opacity .2s}
+.svc-tags{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:5px;align-content:start;opacity:0;transform:translateY(6px);transition:opacity .2s, transform .2s}
+.w-body ul.svc-tags{flex-direction:row;padding:0;gap:5px}
+.svc-tags li{border:1px solid var(--line);border-radius:999px;padding:5px 8px;font-size:10px;line-height:1.2}
+.svc-card.open .svc-tags{opacity:1;transform:none}
+.svc-card.open .svc-desc{opacity:0}
+.svc-card.open .svc-plus{transform:rotate(45deg)}
+.svc-card.open{border-color:var(--ink)}
+@media (hover:hover){
+  .svc-card:hover{transform:translateY(-3px);border-color:var(--ink)}
+  .svc-card:hover .svc-tags{opacity:1;transform:none}
+  .svc-card:hover .svc-desc{opacity:0}
+  .svc-card:hover .svc-plus{transform:rotate(45deg)}
+}
+.svc-price{margin-top:14px;padding-top:12px;border-top:1px dashed var(--line);font-size:15px;font-weight:700;letter-spacing:-.02em;display:flex;justify-content:space-between;align-items:baseline;gap:8px;flex-wrap:wrap}
+.svc-price small{font-size:10px;font-weight:500;color:var(--muted);letter-spacing:0}
+.svc-accent{grid-column:3/5;grid-row:1/3;padding:26px;background:var(--ink);border-color:var(--ink);color:var(--panel)}
+.svc-accent .svc-top,.svc-accent .svc-desc{color:color-mix(in srgb, var(--panel) 80%, transparent)}
+.svc-accent h3{font-size:clamp(28px,3.2vw,44px);line-height:.95;letter-spacing:-.05em;margin:30px 0 16px;max-width:420px}
+.svc-accent .svc-body{display:flex;flex-direction:column;gap:18px}
+.svc-accent .svc-desc{font-size:14px;max-width:420px}
+.svc-accent .svc-tags{opacity:1;transform:none;gap:7px}
+.svc-accent .svc-tags li{border-color:color-mix(in srgb, var(--panel) 40%, transparent);padding:8px 12px;font-size:11px}
+.svc-accent .svc-price{border-color:color-mix(in srgb, var(--panel) 40%, transparent);font-size:17px}
+.svc-accent:hover{transform:none}
+.svc-wide{grid-column:1/-1;min-height:0}
+.svc-wide .svc-body{display:flex;flex-wrap:wrap;gap:8px 16px;align-items:center}
+.svc-wide .svc-tags{opacity:1;transform:none}
+.svc-cta{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:24px;align-items:center;padding-top:22px;border-top:1px solid var(--line)}
+.svc-cta h3{font-size:24px;letter-spacing:-.03em;margin:0 0 6px;font-weight:600}
+.svc-cta p{font-size:13px;color:var(--muted)}
+.actions{display:flex;gap:8px;flex-wrap:wrap}
+.btn.ghost{background:transparent;color:var(--ink);border:1px solid var(--ink)}
+
+/* обо мне */
+.about{display:grid;grid-template-columns:minmax(0,300px) minmax(0,1fr);gap:36px;align-items:start}
+.about-photo{position:relative;aspect-ratio:4/5;max-width:100%;margin:10px 8px 0}
+.about-photo .sheet{position:absolute;inset:0;border:1px solid var(--line);border-radius:16px;background:var(--folder2);transform:rotate(-6deg);opacity:0;animation:sheetIn .7s .15s cubic-bezier(.2,.8,.2,1) forwards}
+.about-photo .sheet.s2{background:var(--folder3);transform:rotate(4deg);animation-delay:.25s}
+.about-photo .pic{position:absolute;inset:0;border-radius:16px;overflow:hidden;border:1px solid var(--line);background:linear-gradient(140deg,#c0b3aa,#a3aaa9 55%,#7c6f72);display:grid;place-items:end start;padding:12px;opacity:0;animation:picIn .8s .35s cubic-bezier(.2,.8,.2,1) forwards}
+.about-photo .pic span{background:color-mix(in srgb, var(--panel) 85%, transparent);border-radius:8px;padding:5px 9px;font-size:10px;text-transform:uppercase}
+.about-photo .badge{position:absolute;right:-10px;top:-14px;width:86px;height:86px;border-radius:50%;background:var(--ink);color:var(--panel);display:grid;place-items:center;text-align:center;font-size:10px;line-height:1.15;text-transform:uppercase;letter-spacing:.03em;opacity:0;animation:badgeIn .6s .9s cubic-bezier(.3,1.6,.5,1) forwards, sway 5s 1.6s ease-in-out infinite}
+.about-photo .badge b{display:block;font-size:22px;letter-spacing:-.04em}
+@keyframes sheetIn{from{opacity:0;transform:rotate(0) translateY(20px)}to{opacity:1}}
+@keyframes picIn{from{opacity:0;transform:translateY(24px) rotate(-2deg)}to{opacity:1;transform:rotate(-1deg)}}
+@keyframes badgeIn{from{opacity:0;transform:scale(.4) rotate(-30deg)}to{opacity:1;transform:rotate(8deg)}}
+@keyframes sway{0%,100%{transform:rotate(8deg)}50%{transform:rotate(-4deg)}}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chips span{font-size:10px;text-transform:uppercase;letter-spacing:.04em;border:1px solid var(--line);border-radius:999px;padding:5px 10px;opacity:0;animation:pop .4s cubic-bezier(.3,1.6,.5,1) forwards;animation-delay:calc(var(--i) * 50ms + 700ms)}
+@keyframes pop{from{opacity:0;transform:scale(.6)}to{opacity:1;transform:none}}
+.contacts a{text-decoration:none}
+
+@media (max-width:1280px){
   .widgets{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media (max-width:1100px){
   .folders{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .svc-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .svc-accent{grid-column:1/-1;grid-row:auto}
+}
+@media (max-width:640px){
+  .svc-head,.svc-cta,.about{grid-template-columns:1fr}
+  .svc-grid{grid-template-columns:1fr}
+  .svc-card{min-height:0}
+  .svc-accent{padding:22px}
+  .about-photo{max-width:260px}
 }
 @media (max-width:820px){
   .bar nav{display:none}
@@ -161,8 +265,18 @@ details p{padding-bottom:14px}
   table.price td:first-child{width:auto}
   table.price td:nth-child(2){display:none}
 }
-@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation-duration:.01ms!important;animation-delay:0s!important;animation-iteration-count:1!important}}
 </style>
+
+<div class="boot" id="boot" aria-hidden="true">
+  <div class="boot-inner">
+    <div class="boot-mono">OS</div>
+    <b>OKSANA SERGEEVA</b>
+    <small>Сайты для вашего дела</small>
+    <div class="loader"></div>
+    <small class="ready">Рабочий стол готов</small>
+  </div>
+</div>
 
 <header class="bar">
   <a class="logo" href="#top"><i>OS</i>Oksana Sergeeva</a>
@@ -402,26 +516,29 @@ details p{padding-bottom:14px}
 </dialog>
 
 <!-- ОКНА РАЗДЕЛОВ -->
-<dialog id="w-services" aria-labelledby="w-services-t">
+<dialog id="w-services" class="wide" aria-labelledby="w-services-t">
   <div class="w-bar"><span class="up">Услуги и цены</span><button class="w-close" type="button" aria-label="Закрыть"><svg viewBox="0 0 14 14"><path d="M3 3l8 8M11 3l-8 8"/></svg></button></div>
   <div class="w-body">
-    <h2 id="w-services-t">Услуги и цены</h2>
-    <p>Цены указаны «от». Точную сумму назову после разговора о задаче. Платить всё сразу не нужно, оплата по этапам.</p>
-    <div style="overflow-x:auto">
-    <table class="price">
-      <tr><td>Сайт под ключ<small>лендинг 2–3 нед., сайт 3–6 нед.</small></td><td>Структура, дизайн в Figma, версия для телефона, сборка на Tilda, формы, сервисы, базовое SEO, публикация</td><td>от 60 000 ₽</td></tr>
-      <tr><td>Дизайн сайта<small>1–3 недели</small></td><td>Структура, прототип, дизайн страниц, версии для телефона и планшета, макет для разработчика</td><td>от 30 000 ₽</td></tr>
-      <tr><td>Вёрстка на Tilda<small>3–10 дней</small></td><td>По готовому макету: Zero Block, адаптация, формы, анимации, домен и сервисы</td><td>от 25 000 ₽</td></tr>
-      <tr><td>Редизайн<small>2–4 недели</small></td><td>Разбор текущего сайта, новая структура и дизайн, сборка на Tilda</td><td>от 40 000 ₽</td></tr>
-      <tr><td>Интернет-магазин<small>3–6 недель</small></td><td>Дизайн, каталог, карточки товаров, корзина, оплата</td><td>от 80 000 ₽</td></tr>
-      <tr><td>Сайт на Taplink<small>3–7 дней</small></td><td>Структура, дизайн, мобильная версия, сборка, формы и сервисы</td><td>от 10 000 ₽</td></tr>
-      <tr><td>Чат-боты и воронки<small>1–5 дней</small></td><td>Бот выдаёт материал, прогревает и принимает оплату. LeadConverter, ChatPlace</td><td>от 10 000 ₽</td></tr>
-      <tr><td>Упаковка онлайн-продукта</td><td>Лендинг, GetCourse или Prodamus, оплата, выдача доступа, рассылки</td><td>после оценки</td></tr>
-      <tr><td>Сопровождение</td><td>Новые страницы, правки и доработки после запуска</td><td>от 5 000 ₽</td></tr>
-      <tr><td>Материалы для продуктов</td><td>Гайды, чек-листы, презентации, обложки</td><td>по запросу</td></tr>
-    </table>
+    <div class="svc-head">
+      <div><div class="up" style="color:var(--muted)">Oksana Sergeeva · веб-дизайнер</div><h2 id="w-services-t" style="margin-top:10px">Услуги</h2></div>
+      <p>Цены указаны «от»: итоговая сумма зависит от объёма задачи. Нажмите на карточку, чтобы увидеть, что входит в работу. Платить всё сразу не нужно, оплата по этапам.</p>
     </div>
-    <div class="note"><p>Если бюджет меньше, напишите, какая сумма для вас комфортна. Подскажу, что можно сделать: начать с одной страницы, сделать Taplink или заказать только дизайн.</p></div>
+    <div class="svc-grid anim">
+      <button type="button" class="svc-card"><span class="svc-top"><span>/01</span><span class="svc-plus" aria-hidden="true">+</span></span><h3>Сайт под ключ</h3><span class="svc-body"><p class="svc-desc">Если сайта нет или проще начать с нуля. Делаю всё сама: от структуры до публикации.</p><ul class="svc-tags"><li>структура</li><li>прототип</li><li>дизайн в Figma</li><li>версия для телефона</li><li>Tilda / Zero Block</li><li>формы</li><li>базовое SEO</li><li>публикация</li></ul></span><span class="svc-price">от 60 000 ₽<small>2–6 недель</small></span></button>
+      <button type="button" class="svc-card"><span class="svc-top"><span>/02</span><span class="svc-plus" aria-hidden="true">+</span></span><h3>Дизайн сайта</h3><span class="svc-body"><p class="svc-desc">Если собирать сайт будет другой специалист или у вас уже есть разработчик.</p><ul class="svc-tags"><li>структура</li><li>прототип</li><li>дизайн страниц</li><li>телефон и планшет</li><li>макет для разработчика</li></ul></span><span class="svc-price">от 30 000 ₽<small>1–3 недели</small></span></button>
+      <div class="svc-card svc-accent"><span class="svc-top"><span>/03</span><span>после оценки</span></span><h3>Упаковка онлайн-продукта</h3><span class="svc-body"><p class="svc-desc">Есть курс, а оплата, доступы и напоминания идут вручную. Собираю техническую часть запуска в одну систему, которая работает сама.</p><ul class="svc-tags"><li>лендинг</li><li>оформление продукта</li><li>GetCourse / Prodamus</li><li>приём оплаты</li><li>автоматическая выдача доступа</li><li>боты и рассылки</li></ul></span><span class="svc-price">Стоимость после оценки задачи</span></div>
+      <button type="button" class="svc-card"><span class="svc-top"><span>/04</span><span class="svc-plus" aria-hidden="true">+</span></span><h3>Вёрстка на Tilda</h3><span class="svc-body"><p class="svc-desc">Дизайн уже готов в Figma. Соберу его на Tilda и проверю на телефоне и планшете.</p><ul class="svc-tags"><li>Zero Block</li><li>адаптация</li><li>формы</li><li>анимации</li><li>домен и сервисы</li></ul></span><span class="svc-price">от 25 000 ₽<small>3–10 дней</small></span></button>
+      <button type="button" class="svc-card"><span class="svc-top"><span>/05</span><span class="svc-plus" aria-hidden="true">+</span></span><h3>Редизайн</h3><span class="svc-body"><p class="svc-desc">Сайт есть, но устарел, стал неудобным или бизнес из него вырос.</p><ul class="svc-tags"><li>разбор текущего сайта</li><li>новая структура</li><li>новый дизайн</li><li>версия для телефона</li><li>сборка на Tilda</li></ul></span><span class="svc-price">от 40 000 ₽<small>2–4 недели</small></span></button>
+      <button type="button" class="svc-card"><span class="svc-top"><span>/06</span><span class="svc-plus" aria-hidden="true">+</span></span><h3>Интернет-магазин</h3><span class="svc-body"><p class="svc-desc">Свой магазин на Tilda: товары и цены потом меняете сами.</p><ul class="svc-tags"><li>дизайн</li><li>каталог</li><li>карточки товаров</li><li>корзина</li><li>оплата</li></ul></span><span class="svc-price">от 80 000 ₽<small>3–6 недель</small></span></button>
+      <button type="button" class="svc-card"><span class="svc-top"><span>/07</span><span class="svc-plus" aria-hidden="true">+</span></span><h3>Сайт на Taplink</h3><span class="svc-body"><p class="svc-desc">Бюджет пока небольшой, а показать услуги и принимать заявки нужно уже сейчас.</p><ul class="svc-tags"><li>структура</li><li>дизайн</li><li>мобильная версия</li><li>формы</li><li>сервисы</li></ul></span><span class="svc-price">от 10 000 ₽<small>3–7 дней</small></span></button>
+      <button type="button" class="svc-card"><span class="svc-top"><span>/08</span><span class="svc-plus" aria-hidden="true">+</span></span><h3>Чат-боты и воронки</h3><span class="svc-body"><p class="svc-desc">Человек пишет слово в Instagram или Telegram, бот отправляет материал, рассказывает о продукте и принимает оплату.</p><ul class="svc-tags"><li>сценарий</li><li>LeadConverter</li><li>ChatPlace</li><li>оплата</li><li>доступ к продукту</li></ul></span><span class="svc-price">от 10 000 ₽<small>1–5 дней</small></span></button>
+      <button type="button" class="svc-card"><span class="svc-top"><span>/09</span><span class="svc-plus" aria-hidden="true">+</span></span><h3>Сопровождение</h3><span class="svc-body"><p class="svc-desc">Сайт готов, а дальше нужно что-то поменять или добавить.</p><ul class="svc-tags"><li>новые страницы</li><li>цены и услуги</li><li>правки блоков</li><li>видеоуроки по сайту</li></ul></span><span class="svc-price">от 5 000 ₽</span></button>
+      <div class="svc-card svc-wide"><span class="svc-top"><span>/10</span><span>по запросу</span></span><span class="svc-body"><h3 style="margin:8px 16px 0 0">Материалы для продуктов</h3><ul class="svc-tags"><li>презентации</li><li>гайды</li><li>чек-листы</li><li>рабочие тетради</li><li>обложки</li></ul></span></div>
+    </div>
+    <div class="svc-cta">
+      <div><h3>Не знаете, что выбрать?</h3><p>Напишите, чем занимаетесь и какой у вас бюджет. Подскажу, что можно сделать: начать с одной страницы, сделать Taplink или заказать только дизайн.</p></div>
+      <div class="actions"><a class="btn js-write" href="https://t.me/oksergeevadesign" target="_blank" rel="noopener">Написать ↗</a></div>
+    </div>
   </div>
 </dialog>
 
@@ -429,7 +546,7 @@ details p{padding-bottom:14px}
   <div class="w-bar"><span class="up">Как работаю</span><button class="w-close" type="button" aria-label="Закрыть"><svg viewBox="0 0 14 14"><path d="M3 3l8 8M11 3l-8 8"/></svg></button></div>
   <div class="w-body">
     <h2 id="w-process-t">Как проходит работа</h2>
-    <ol class="flow">
+    <ol class="flow anim">
       <li><b>Вы пишете</b><span>В Telegram или на почту. Если не знаете, какой сайт нужен, так и напишите.</span></li>
       <li><b>Задаю вопросы и считаю</b><span>Называю цену и сроки. До этого момента вы ничего не платите.</span></li>
       <li><b>Предоплата и старт</b><span>20/40/40 или 50/50.</span></li>
@@ -448,18 +565,29 @@ details p{padding-bottom:14px}
         <li>С юрлицами работаю по договору.</li>
       </ul>
     </div>
+    <div class="actions"><a class="btn js-write" href="https://t.me/oksergeevadesign" target="_blank" rel="noopener">Написать ↗</a></div>
   </div>
 </dialog>
 
-<dialog id="w-about" aria-labelledby="w-about-t">
+<dialog id="w-about" class="wide" aria-labelledby="w-about-t">
   <div class="w-bar"><span class="up">Обо мне</span><button class="w-close" type="button" aria-label="Закрыть"><svg viewBox="0 0 14 14"><path d="M3 3l8 8M11 3l-8 8"/></svg></button></div>
   <div class="w-body">
-    <h2 id="w-about-t">Привет, я Оксана</h2>
-    <p>Я веб-дизайнер из Новосибирска. Работаю удалённо, клиенты у меня из разных городов, чаще всего из Москвы. В дизайне с 2022 года, за это время сделала больше 50 проектов.</p>
-    <p>Я всегда хотела работать удалённо, и веб-дизайн оказался работой, которая мне подошла.</p>
-    <p>Я не начинаю с картинки. Сначала разбираюсь, чем вы занимаетесь, кто ваши клиенты и что им важно узнать до того, как они вам напишут. Дизайн рисую уже под это.</p>
-    <p>Я на связи и не пропадаю после предоплаты. Если вижу, что можно сделать удобнее, предлагаю свой вариант, а решаете вы.</p>
-    <div class="meta"><span>Figma</span><span>Tilda</span><span>Zero Block</span><span>Taplink</span><span>GetCourse</span><span>Prodamus XL</span><span>LeadConverter</span><span>ChatPlace</span><span>Photoshop</span><span>Illustrator</span></div>
+    <div class="about">
+      <div class="about-photo">
+        <span class="sheet"></span><span class="sheet s2"></span>
+        <div class="pic"><span>фото Оксаны</span></div>
+        <div class="badge"><span><b>50+</b>проектов<br>с 2022</span></div>
+      </div>
+      <div class="stack anim" style="display:flex;flex-direction:column;gap:16px">
+        <h2 id="w-about-t">Привет, я Оксана</h2>
+        <p>Я веб-дизайнер из Новосибирска. Работаю удалённо, клиенты у меня из разных городов, чаще всего из Москвы. В дизайне с 2022 года, за это время сделала больше 50 проектов.</p>
+        <p>Я всегда хотела работать удалённо, и веб-дизайн оказался работой, которая мне подошла.</p>
+        <p>Я не начинаю с картинки. Сначала разбираюсь, чем вы занимаетесь, кто ваши клиенты и что им важно узнать до того, как они вам напишут. Дизайн рисую уже под это.</p>
+        <p>Я на связи и не пропадаю после предоплаты. Если вижу, что можно сделать удобнее, предлагаю свой вариант, а решаете вы.</p>
+        <div class="chips"><span style="--i:0">Figma</span><span style="--i:1">Tilda</span><span style="--i:2">Zero Block</span><span style="--i:3">Taplink</span><span style="--i:4">GetCourse</span><span style="--i:5">Prodamus XL</span><span style="--i:6">LeadConverter</span><span style="--i:7">ChatPlace</span><span style="--i:8">Photoshop</span><span style="--i:9">Illustrator</span></div>
+        <div class="actions"><a class="btn js-write" href="https://t.me/oksergeevadesign" target="_blank" rel="noopener">Написать ↗</a></div>
+      </div>
+    </div>
   </div>
 </dialog>
 
@@ -501,8 +629,13 @@ details p{padding-bottom:14px}
       <div><span>Telegram</span><b>@oksergeevadesign</b></div>
       <div><span>Почта</span><b>oksana159768@mail.ru</b></div>
       <div><span>Instagram</span><b>@bysergeeva_design</b></div>
+      <div><span>Телефон · звонки и MAX</span><b>8 923 151-05-00</b></div>
     </div>
-    <a class="btn" style="align-self:flex-start" href="https://t.me/oksergeevadesign" target="_blank" rel="noopener">Написать в Telegram ↗</a>
+    <div class="actions">
+      <a class="btn js-write" href="https://t.me/oksergeevadesign" target="_blank" rel="noopener">Написать ↗</a>
+      <a class="btn ghost" href="tel:+79231510500">Позвонить</a>
+      <a class="btn ghost" href="https://t.me/oksergeevadesign" target="_blank" rel="noopener">Telegram ↗</a>
+    </div>
   </div>
 </dialog>
 
@@ -527,6 +660,27 @@ details p{padding-bottom:14px}
   skins.forEach(function(b){b.addEventListener('click',function(){setSkin(b.dataset.skin)})});
   setSkin(saved);
 
+  // загрузка
+  var boot=document.getElementById('boot');
+  var quick=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  setTimeout(function(){boot.classList.add('hide')}, quick?50:2300);
+  setTimeout(function(){boot.remove()}, quick?600:2900);
+
+  // номер для анимации карточек по очереди
+  document.querySelectorAll('.anim').forEach(function(g){
+    Array.prototype.forEach.call(g.children,function(c,i){c.style.setProperty('--i',i)});
+  });
+  // карточки услуг: на телефоне открываются нажатием
+  document.querySelectorAll('button.svc-card').forEach(function(c){
+    c.addEventListener('click',function(){c.classList.toggle('open')});
+  });
+  // перезапуск анимаций при каждом открытии окна
+  function replay(d){
+    d.querySelectorAll('.anim,.about-photo,.chips').forEach(function(el){
+      el.style.display='none'; void el.offsetWidth; el.style.display='';
+    });
+  }
+
   // окна
   var dock=document.querySelectorAll('.dock button');
   function mark(id){dock.forEach(function(b){b.classList.toggle('on',(b.dataset.open||b.dataset.dock)===id)})}
@@ -534,7 +688,7 @@ details p{padding-bottom:14px}
     b.addEventListener('click',function(){
       document.querySelectorAll('dialog[open]').forEach(function(d){d.close()});
       var d=document.getElementById(b.dataset.open); if(!d) return;
-      d.showModal(); d.querySelector('.w-body').scrollTop=0; mark(d.id);
+      d.showModal(); replay(d); d.querySelector('.w-body').scrollTop=0; mark(d.id);
     });
   });
   document.querySelectorAll('dialog').forEach(function(d){
