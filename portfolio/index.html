@@ -281,6 +281,14 @@ dialog[open]{animation:winIn .28s cubic-bezier(.2,.8,.2,1)}
   .swatches{grid-template-columns:repeat(5,minmax(0,1fr));gap:6px}
 }
 
+.hero-shot{box-shadow:0 20px 50px rgb(0 0 0 / .12)}
+.sol.sol-wide{grid-template-columns:1fr;gap:16px}
+.sol.sol-wide .sol-text{max-width:640px}
+.sol.sol-wide .sol-text h3{font-size:clamp(24px,3vw,36px)!important}
+.kit-wideimg{grid-column:span 6}
+.kit-wideimg img{max-height:560px;object-fit:cover;object-position:top}
+@media (max-width:760px){.kit-wideimg{grid-column:auto}}
+
 /* услуги карточками */
 dialog.wide{width:min(1120px, calc(100vw - 32px))}
 .svc-head{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,420px);gap:24px;align-items:end}
@@ -442,15 +450,15 @@ button.svc-card{font:inherit}
       </button>
       <button class="folder" type="button" data-open="c-baloven">
         <span class="f-art" aria-hidden="true"><span class="f-back"></span><span class="f-paper"></span><span class="f-paper p2"></span><span class="f-front"><span>/05</span><svg viewBox="0 0 14 14"><path d="M3 11L11 3M5 3h6v6"/></svg></span></span>
-        <span><span class="f-name">[05] Баловень</span><span class="f-tags" style="display:block">концепция · 10 страниц</span></span>
+        <span><span class="f-name">[05] Баловень</span><span class="f-tags" style="display:block">редизайн · 10 страниц</span></span>
       </button>
       <button class="folder" type="button" data-open="c-lara">
         <span class="f-art" aria-hidden="true"><span class="f-back"></span><span class="f-paper"></span><span class="f-paper p2"></span><span class="f-front"><span>/06</span><svg viewBox="0 0 14 14"><path d="M3 11L11 3M5 3h6v6"/></svg></span></span>
-        <span><span class="f-name">[06] Lara Shell</span><span class="f-tags" style="display:block">концепция · голосовой поиск</span></span>
+        <span><span class="f-name">[06] Lara Shell</span><span class="f-tags" style="display:block">редизайн · голосовой поиск</span></span>
       </button>
       <button class="folder" type="button" data-open="c-scenar">
         <span class="f-art" aria-hidden="true"><span class="f-back"></span><span class="f-paper"></span><span class="f-paper p2"></span><span class="f-front"><span>/07</span><svg viewBox="0 0 14 14"><path d="M3 11L11 3M5 3h6v6"/></svg></span></span>
-        <span><span class="f-name">[07] СКЭНАР-ГРАНД</span><span class="f-tags" style="display:block">концепция · 11 страниц</span></span>
+        <span><span class="f-name">[07] СКЭНАР-ГРАНД</span><span class="f-tags" style="display:block">редизайн · подбор лечения</span></span>
       </button>
       <button class="folder" type="button" data-open="c-brewns">
         <span class="f-art" aria-hidden="true"><span class="f-back"></span><span class="f-paper"></span><span class="f-paper p2"></span><span class="f-front"><span>/08</span><svg viewBox="0 0 14 14"><path d="M3 11L11 3M5 3h6v6"/></svg></span></span>
@@ -660,35 +668,109 @@ button.svc-card{font:inherit}
   </div>
 </dialog>
 
-<dialog id="c-lara" aria-labelledby="c-lara-t">
+<dialog id="c-lara" class="wide" aria-labelledby="c-lara-t">
   <div class="w-bar"><span class="up">/06 · Lara Shell</span><button class="w-close" type="button" aria-label="Закрыть"><svg viewBox="0 0 14 14"><path d="M3 3l8 8M11 3l-8 8"/></svg></button></div>
-  <div class="w-body">
-    <div class="meta"><span class="kind">концепция</span><span>2026</span><span>6 страниц</span><span>голосовой поиск</span></div>
-    <h2 id="c-lara-t">Студия БМС-тренировок Lara Shell</h2>
-    <div class="shot"><img src="img/lara.jpg" alt="Главная страница концепции сайта Lara Shell" loading="lazy"></div>
-    <p>Концепция редизайна сайта bms-health.ru для студии восстановительных тренировок в Москве.</p>
-    <ul>
-      <li>Шесть страниц: главная, массаж лица, детские занятия, обучение на аппаратах, магазин оборудования, блог</li>
-      <li>Навигатор «Чем вам помочь?» с голосовым поиском, его логику перенесла с текущего сайта</li>
-      <li>Сохранила фирменные цвета, шрифт Gilroy, фото, тексты и цены</li>
-    </ul>
+  <div class="w-body anim">
+    <div class="meta"><span class="kind">редизайн</span><span>студия БМС-тренировок · Москва</span><span>работаем сейчас</span></div>
+    <h2 id="c-lara-t">Сайт, который сам спрашивает: «Чем вам помочь?»</h2>
+    <div class="shot hero-shot"><img src="img/lara.jpg" alt="Главная страница сайта Lara Shell" loading="lazy"></div>
+    <div class="pain">
+      <p>В студии шесть направлений: тренировки, массаж лица, детские занятия, коучинг, обучение и магазин. А человек приходит не за «БМС», а с больной спиной.</p>
+      <p>Чтобы он не ушёл, сайт должен понять его с полуслова.</p>
+    </div>
+    <div class="sol sol-wide">
+      <div class="sol-text"><span class="case-n">01</span><h3>Голосовой поиск: сказал «болит спина», получил ответ</h3><p>Кнопка «Чем вам помочь?» есть на каждой странице. Человек говорит или пишет своими словами, и сайт сразу показывает подходящую услугу, страницу и статью. Это главная идея сайта.</p></div>
+      <div class="shot"><img src="img/lara/voice.jpg" alt="Голосовой поиск «Чем вам помочь?» с ответом на запрос «болит спина»" loading="lazy"></div>
+    </div>
+    <div class="sol flip">
+      <div class="sol-text"><span class="case-n">02</span><h3>Навигатор по запросу вместо меню из терминов</h3><p>На главной список живых запросов: «Беспокоит спина, шея или суставы», «Нужны занятия для ребёнка». Нажал свой и увидел направление, первый шаг и стоимость.</p></div>
+      <div class="shot"><img src="img/lara/navigator.jpg" alt="Навигатор «С каким запросом вы пришли?»" loading="lazy"></div>
+    </div>
+
+    <div class="site-show">
+      <div class="show-head"><div><span class="case-n">Весь сайт</span><h3>6 страниц, каждая со своей задачей</h3></div><p>Переключайте страницы и листайте внутри окна.</p></div>
+      <div class="pg-tabs" role="tablist"><button type="button" class="pg-tab on" data-src="img/lara/full-index.jpg" data-url="bms-health.ru/">Главная</button><button type="button" class="pg-tab" data-src="img/lara/full-massage.jpg" data-url="bms-health.ru/massage">Массаж лица</button><button type="button" class="pg-tab" data-src="img/lara/full-children.jpg" data-url="bms-health.ru/children">Детские занятия</button><button type="button" class="pg-tab" data-src="img/lara/full-obuchenie.jpg" data-url="bms-health.ru/obuchenie">Обучение</button><button type="button" class="pg-tab" data-src="img/lara/full-shop.jpg" data-url="bms-health.ru/shop">Магазин</button><button type="button" class="pg-tab" data-src="img/lara/full-blog.jpg" data-url="bms-health.ru/blog">Блог</button></div>
+      <div class="browser">
+        <div class="browser-bar"><i></i><i></i><i></i><span class="browser-url">bms-health.ru/</span></div>
+        <div class="browser-view" tabindex="0" aria-label="Страница сайта, можно листать"><img src="img/lara/full-index.jpg" alt="Страница сайта целиком" loading="lazy"></div>
+      </div>
+    </div>
+
+    <div class="mob-show">
+      <div class="show-head"><div><span class="case-n">Мобильная версия</span><h3>Удобно с телефона, откуда приходит большинство клиентов</h3></div><p>Каждую страницу я рисую отдельно под экран телефона.</p></div>
+      <div class="phones"><figure class="phone"><div class="phone-screen"><img src="img/lara/mob-index.jpg" alt="Главная на телефоне" loading="lazy" style="animation-delay:-0s"></div><figcaption>Главная</figcaption></figure><figure class="phone"><div class="phone-screen"><img src="img/lara/mob-massage.jpg" alt="Массаж лица на телефоне" loading="lazy" style="animation-delay:-6s"></div><figcaption>Массаж лица</figcaption></figure><figure class="phone"><div class="phone-screen"><img src="img/lara/mob-shop.jpg" alt="Магазин на телефоне" loading="lazy" style="animation-delay:-12s"></div><figcaption>Магазин</figcaption></figure></div>
+    </div>
+
+    <div class="kit">
+      <div class="show-head"><div><span class="case-n">UI-кит</span><h3>Дизайн-система, чтобы сайт рос без хаоса</h3></div><p>Цвета, шрифты и готовые блоки. Новую услугу или страницу можно собрать быстро, и всё будет в одном стиле.</p></div>
+      <div class="kit-grid">
+        <div class="kit-card kit-colors"><span class="up">Цвета бренда</span><div class="swatches"><div><span style="background:#3F325E"></span><b>Слива</b><small>#3F325E</small></div><div><span style="background:#2B1F36"></span><b>Ночь</b><small>#2B1F36</small></div><div><span style="background:#DEC14A"></span><b>Золото</b><small>#DEC14A</small></div><div><span style="background:#9F85AD"></span><b>Лаванда</b><small>#9F85AD</small></div><div><span style="background:#EFEDF3"></span><b>Туман</b><small>#EFEDF3</small></div></div></div>
+        <div class="kit-card kit-type"><span class="up">Шрифт</span><div class="type-big" style="font-family:Gilroy, sans-serif;color:#3F325E;text-transform:none;font-weight:700">Lara Shell</div><small>Gilroy: заголовки и текст</small></div>
+        <div class="kit-card kit-wideimg"><span class="up">Карточки цен</span><img src="img/lara/prices.jpg" alt="Карточки цен" loading="lazy"></div>
+      </div>
+    </div>
+
+    <div class="proof"><div class="proof-num"><b>2</b><span>недели</span></div><div class="proof-num"><b>70&nbsp;000&nbsp;₽</b><span>стоимость редизайна</span></div><div class="proof-num"><b>внедрено</b><span>клиент запустил сайт</span></div><p>Фирменные цвета, шрифт Gilroy, фото, тексты и цены студии я сохранила. Клиент одобрил концепцию и внедрил её.</p></div>
+
+    <div class="gift">
+      <div><div class="up">Подарок</div><h3>Пришлите ссылку на ваш сайт</h3><p>Бесплатно покажу 3 места, где вы теряете клиентов.</p></div>
+      <a class="btn js-write" href="https://t.me/oksergeevadesign" target="_blank" rel="noopener">Прислать ссылку ↗</a>
+    </div>
   </div>
 </dialog>
 
-<dialog id="c-scenar" aria-labelledby="c-scenar-t">
+<dialog id="c-scenar" class="wide" aria-labelledby="c-scenar-t">
   <div class="w-bar"><span class="up">/07 · СКЭНАР-ГРАНД</span><button class="w-close" type="button" aria-label="Закрыть"><svg viewBox="0 0 14 14"><path d="M3 3l8 8M11 3l-8 8"/></svg></button></div>
-  <div class="w-body">
-    <div class="meta"><span class="kind">концепция</span><span>2026</span><span>11 страниц</span><span>навигатор по симптомам</span></div>
-    <h2 id="c-scenar-t">Центр СКЭНАР-терапии доктора Никитина</h2>
-    <div class="shot"><img src="img/scenar.jpg" alt="Главная страница концепции сайта СКЭНАР-ГРАНД" loading="lazy"></div>
-    <p>У центра в Калининграде четыре направления: лечение, диагностика, школа и магазин. Задача была в том, чтобы пациент быстро понял, с чего начать, и дошёл до записи.</p>
-    <ul>
-      <li>«Путь пациента»: консультация, диагностика, курс лечения, поддержка дома</li>
-      <li>Навигатор по симптомам: схема тела с точками, по клику открываются подходящие услуги</li>
-      <li>Голосовой поиск по услугам, симптомам, товарам и статьям</li>
-      <li>Отдельные страницы школы и магазина с фильтрами</li>
-      <li>Официальный прайс с кодами медицинских услуг сохранён</li>
-    </ul>
+  <div class="w-body anim">
+    <div class="meta"><span class="kind">редизайн</span><span>центр СКЭНАР-терапии · Калининград</span><span>работаем сейчас</span></div>
+    <h2 id="c-scenar-t">Сайт, который сам подбирает лечение под симптом</h2>
+    <div class="shot hero-shot"><img src="img/scenar.jpg" alt="Главная страница сайта СКЭНАР-ГРАНД" loading="lazy"></div>
+    <div class="pain">
+      <p>У центра четыре направления: лечение, диагностика, школа и магазин аппаратов. Пациент приходит с болью, а не с названием метода.</p>
+      <p>Раньше ему приходилось самому разбираться, что такое СКЭНАР и что ему подойдёт.</p>
+    </div>
+    <div class="sol sol-wide">
+      <div class="sol-text"><span class="case-n">01</span><h3>Подбор решения: показал, где болит, получил лечение</h3><p>Схема тела с точками. Нажал туда, где беспокоит, и сразу видно систему организма, заболевания и процедуры, которые помогут.</p></div>
+      <div class="shot"><img src="img/scenar/navigator.jpg" alt="Навигатор по симптомам: схема тела и подходящие процедуры" loading="lazy"></div>
+    </div>
+    <div class="sol flip">
+      <div class="sol-text"><span class="case-n">02</span><h3>Голосовой поиск своими словами</h3><p>Можно сказать или написать «болит спина». Сайт покажет услугу с ценой, систему организма и статью о проблеме.</p></div>
+      <div class="shot"><img src="img/scenar/voice.jpg" alt="Голосовой поиск с ответом на запрос «болит спина»" loading="lazy"></div>
+    </div>
+    <div class="sol">
+      <div class="sol-text"><span class="case-n">03</span><h3>Понятный путь пациента</h3><p>Консультация, диагностика, курс лечения и поддержка дома. Человек видит, с чего начать и что будет дальше.</p></div>
+      <div class="shot"><img src="img/scenar/route.jpg" alt="Путь пациента из четырёх шагов" loading="lazy"></div>
+    </div>
+
+    <div class="site-show">
+      <div class="show-head"><div><span class="case-n">Весь сайт</span><h3>9 страниц, каждая со своей задачей</h3></div><p>Переключайте страницы и листайте внутри окна.</p></div>
+      <div class="pg-tabs" role="tablist"><button type="button" class="pg-tab on" data-src="img/scenar/full-index.jpg" data-url="scenar-dok-s.ru/">Главная</button><button type="button" class="pg-tab" data-src="img/scenar/full-uslugi.jpg" data-url="scenar-dok-s.ru/uslugi">Лечение</button><button type="button" class="pg-tab" data-src="img/scenar/full-shkola.jpg" data-url="scenar-dok-s.ru/shkola">Школа</button><button type="button" class="pg-tab" data-src="img/scenar/full-magazin.jpg" data-url="scenar-dok-s.ru/magazin">Магазин</button><button type="button" class="pg-tab" data-src="img/scenar/full-o-nas.jpg" data-url="scenar-dok-s.ru/o-nas">О центре</button><button type="button" class="pg-tab" data-src="img/scenar/full-otzyvy.jpg" data-url="scenar-dok-s.ru/otzyvy">Отзывы</button><button type="button" class="pg-tab" data-src="img/scenar/full-prajs-list.jpg" data-url="scenar-dok-s.ru/prajs-list">Прайс-лист</button><button type="button" class="pg-tab" data-src="img/scenar/full-stati.jpg" data-url="scenar-dok-s.ru/stati">Статьи</button><button type="button" class="pg-tab" data-src="img/scenar/full-kontakty.jpg" data-url="scenar-dok-s.ru/kontakty">Контакты</button></div>
+      <div class="browser">
+        <div class="browser-bar"><i></i><i></i><i></i><span class="browser-url">scenar-dok-s.ru/</span></div>
+        <div class="browser-view" tabindex="0" aria-label="Страница сайта, можно листать"><img src="img/scenar/full-index.jpg" alt="Страница сайта целиком" loading="lazy"></div>
+      </div>
+    </div>
+
+    <div class="mob-show">
+      <div class="show-head"><div><span class="case-n">Мобильная версия</span><h3>Удобно с телефона, откуда приходит большинство клиентов</h3></div><p>Каждую страницу я рисую отдельно под экран телефона.</p></div>
+      <div class="phones"><figure class="phone"><div class="phone-screen"><img src="img/scenar/mob-index.jpg" alt="Главная на телефоне" loading="lazy" style="animation-delay:-0s"></div><figcaption>Главная</figcaption></figure><figure class="phone"><div class="phone-screen"><img src="img/scenar/mob-uslugi.jpg" alt="Лечение на телефоне" loading="lazy" style="animation-delay:-6s"></div><figcaption>Лечение</figcaption></figure><figure class="phone"><div class="phone-screen"><img src="img/scenar/mob-magazin.jpg" alt="Магазин на телефоне" loading="lazy" style="animation-delay:-12s"></div><figcaption>Магазин</figcaption></figure></div>
+    </div>
+
+    <div class="kit">
+      <div class="show-head"><div><span class="case-n">UI-кит</span><h3>Дизайн-система, чтобы сайт рос без хаоса</h3></div><p>Цвета, шрифты и готовые блоки. Новую услугу или страницу можно собрать быстро, и всё будет в одном стиле.</p></div>
+      <div class="kit-grid">
+        <div class="kit-card kit-colors"><span class="up">Цвета бренда</span><div class="swatches"><div><span style="background:#00A3D3"></span><b>Лазурь</b><small>#00A3D3</small></div><div><span style="background:#073B52"></span><b>Глубина</b><small>#073B52</small></div><div><span style="background:#EBF9FF"></span><b>Небо</b><small>#EBF9FF</small></div><div><span style="background:#6EBE4D"></span><b>Зелень</b><small>#6EBE4D</small></div><div><span style="background:#FF8562"></span><b>Коралл</b><small>#FF8562</small></div></div></div>
+        <div class="kit-card kit-type"><span class="up">Шрифт</span><div class="type-big" style="font-family:"Proxima Nova", "Helvetica Neue", Arial, sans-serif;color:#073B52;text-transform:none;font-weight:700">СКЭНАР-ГРАНД</div><small>Proxima Nova: заголовки и текст</small></div>
+        <div class="kit-card kit-wideimg"><span class="up">Популярные услуги с ценами</span><img src="img/scenar/prices.jpg" alt="Популярные услуги с ценами" loading="lazy"></div>
+      </div>
+    </div>
+
+    <div class="proof"><div class="proof-num"><b>4</b><span>недели</span></div><div class="proof-num"><b>60&nbsp;000&nbsp;₽</b><span>стоимость редизайна</span></div><div class="proof-num"><b>внедряют</b><span>клиент принял концепцию</span></div><p>Официальный прайс с кодами медицинских услуг, цвета, шрифт и фото центра я сохранила. Клиент принял концепцию и сейчас внедряет её.</p></div>
+
+    <div class="gift">
+      <div><div class="up">Подарок</div><h3>Пришлите ссылку на ваш сайт</h3><p>Бесплатно покажу 3 места, где вы теряете клиентов.</p></div>
+      <a class="btn js-write" href="https://t.me/oksergeevadesign" target="_blank" rel="noopener">Прислать ссылку ↗</a>
+    </div>
   </div>
 </dialog>
 
