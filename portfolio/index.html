@@ -458,7 +458,7 @@ button.svc-card{font:inherit}
       </button>
       <button class="folder" type="button" data-open="c-scenar">
         <span class="f-art" aria-hidden="true"><span class="f-back"></span><span class="f-paper"></span><span class="f-paper p2"></span><span class="f-front"><span>/07</span><svg viewBox="0 0 14 14"><path d="M3 11L11 3M5 3h6v6"/></svg></span></span>
-        <span><span class="f-name">[07] СКЭНАР-ГРАНД</span><span class="f-tags" style="display:block">редизайн · подбор лечения</span></span>
+        <span><span class="f-name">[07] СКЭНАР-терапия</span><span class="f-tags" style="display:block">редизайн · подбор лечения</span></span>
       </button>
       <button class="folder" type="button" data-open="c-brewns">
         <span class="f-art" aria-hidden="true"><span class="f-back"></span><span class="f-paper"></span><span class="f-paper p2"></span><span class="f-front"><span>/08</span><svg viewBox="0 0 14 14"><path d="M3 11L11 3M5 3h6v6"/></svg></span></span>
@@ -720,11 +720,11 @@ button.svc-card{font:inherit}
 </dialog>
 
 <dialog id="c-scenar" class="wide" aria-labelledby="c-scenar-t">
-  <div class="w-bar"><span class="up">/07 · СКЭНАР-ГРАНД</span><button class="w-close" type="button" aria-label="Закрыть"><svg viewBox="0 0 14 14"><path d="M3 3l8 8M11 3l-8 8"/></svg></button></div>
+  <div class="w-bar"><span class="up">/07 · СКЭНАР-терапия</span><button class="w-close" type="button" aria-label="Закрыть"><svg viewBox="0 0 14 14"><path d="M3 3l8 8M11 3l-8 8"/></svg></button></div>
   <div class="w-body anim">
     <div class="meta"><span class="kind">редизайн</span><span>центр СКЭНАР-терапии · Калининград</span><span>работаем сейчас</span></div>
     <h2 id="c-scenar-t">Сайт, который сам подбирает лечение под симптом</h2>
-    <div class="shot hero-shot"><img src="img/scenar.jpg" alt="Главная страница сайта СКЭНАР-ГРАНД" loading="lazy"></div>
+    <div class="shot hero-shot"><img src="img/scenar.jpg" alt="Главная страница сайта центра СКЭНАР-терапии" loading="lazy"></div>
     <div class="pain">
       <p>У центра четыре направления: лечение, диагностика, школа и магазин аппаратов. Пациент приходит с болью, а не с названием метода.</p>
       <p>Раньше ему приходилось самому разбираться, что такое СКЭНАР и что ему подойдёт.</p>
@@ -760,7 +760,7 @@ button.svc-card{font:inherit}
       <div class="show-head"><div><span class="case-n">UI-кит</span><h3>Дизайн-система, чтобы сайт рос без хаоса</h3></div><p>Цвета, шрифты и готовые блоки. Новую услугу или страницу можно собрать быстро, и всё будет в одном стиле.</p></div>
       <div class="kit-grid">
         <div class="kit-card kit-colors"><span class="up">Цвета бренда</span><div class="swatches"><div><span style="background:#00A3D3"></span><b>Лазурь</b><small>#00A3D3</small></div><div><span style="background:#073B52"></span><b>Глубина</b><small>#073B52</small></div><div><span style="background:#EBF9FF"></span><b>Небо</b><small>#EBF9FF</small></div><div><span style="background:#6EBE4D"></span><b>Зелень</b><small>#6EBE4D</small></div><div><span style="background:#FF8562"></span><b>Коралл</b><small>#FF8562</small></div></div></div>
-        <div class="kit-card kit-type"><span class="up">Шрифт</span><div class="type-big" style="font-family:"Proxima Nova", "Helvetica Neue", Arial, sans-serif;color:#073B52;text-transform:none;font-weight:700">СКЭНАР-ГРАНД</div><small>Proxima Nova: заголовки и текст</small></div>
+        <div class="kit-card kit-type"><span class="up">Шрифт</span><div class="type-big" style="font-family:"Proxima Nova", "Helvetica Neue", Arial, sans-serif;color:#073B52;text-transform:none;font-weight:700">СКЭНАР</div><small>Proxima Nova: заголовки и текст</small></div>
         <div class="kit-card kit-wideimg"><span class="up">Популярные услуги с ценами</span><img src="img/scenar/prices.jpg" alt="Популярные услуги с ценами" loading="lazy"></div>
       </div>
     </div>
@@ -978,13 +978,25 @@ button.svc-card{font:inherit}
   document.querySelectorAll('.site-show').forEach(function(sh){
     var view=sh.querySelector('.browser-view'), img=view.querySelector('img'), url=sh.querySelector('.browser-url');
     ['wheel','touchstart','pointerdown','keydown'].forEach(function(ev){view.addEventListener(ev,stopAuto,{passive:true})});
+    var token=0;
+    img.removeAttribute('loading');
     sh.querySelectorAll('.pg-tab').forEach(function(b){
       b.addEventListener('click',function(){
+        var my=++token;
         sh.querySelectorAll('.pg-tab').forEach(function(x){x.classList.toggle('on',x===b)});
-        img.classList.add('swap');
-        setTimeout(function(){ img.src=b.dataset.src; url.textContent=b.dataset.url; view.scrollTop=0; img.classList.remove('swap'); startAuto(view); },200);
+        url.textContent=b.dataset.url;
+        img.classList.add('swap'); stopAuto();
+        var next=new Image();
+        next.onload=next.onerror=function(){
+          if(my!==token) return;
+          img.src=b.dataset.src; view.scrollTop=0;
+          requestAnimationFrame(function(){ img.classList.remove('swap'); startAuto(view); });
+        };
+        next.src=b.dataset.src;
       });
     });
+    // заранее подгружаем остальные страницы, когда окно открыли
+    sh.preload=function(){ sh.querySelectorAll('.pg-tab').forEach(function(b){ var i=new Image(); i.src=b.dataset.src; }); };
   });
 
   // окна
@@ -994,7 +1006,7 @@ button.svc-card{font:inherit}
     b.addEventListener('click',function(){
       document.querySelectorAll('dialog[open]').forEach(function(d){d.close()});
       var d=document.getElementById(b.dataset.open); if(!d) return;
-      d.showModal(); replay(d); baHint(d); stopAuto(); var bv=d.querySelector('.browser-view'); if(bv){bv.scrollTop=0; startAuto(bv);} d.querySelector('.w-body').scrollTop=0; mark(d.id);
+      d.showModal(); replay(d); baHint(d); stopAuto(); var bv=d.querySelector('.browser-view'); if(bv){bv.scrollTop=0; startAuto(bv);} var ss=d.querySelector('.site-show'); if(ss&&ss.preload) setTimeout(ss.preload,1500); d.querySelector('.w-body').scrollTop=0; mark(d.id);
     });
   });
   document.querySelectorAll('dialog').forEach(function(d){
