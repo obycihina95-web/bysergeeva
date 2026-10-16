@@ -289,6 +289,16 @@ dialog[open]{animation:winIn .28s cubic-bezier(.2,.8,.2,1)}
 .kit-wideimg img{max-height:560px;object-fit:cover;object-position:top}
 @media (max-width:760px){.kit-wideimg{grid-column:auto}}
 
+.phone-crop{max-width:340px;justify-self:center;border-radius:22px}
+.phones-one{display:flex;justify-content:center}
+.phones-one .phone{max-width:260px}
+
+.case-mini{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.case-mini > div{border:1px solid var(--line);border-radius:14px;padding:16px 18px;display:flex;flex-direction:column;gap:6px}
+.case-mini h3{margin:0!important}
+.case-mini p{font-size:13px!important;color:var(--muted)}
+@media (max-width:760px){.case-mini{grid-template-columns:1fr}}
+
 /* услуги карточками */
 dialog.wide{width:min(1120px, calc(100vw - 32px))}
 .svc-head{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,420px);gap:24px;align-items:end}
@@ -442,7 +452,7 @@ button.svc-card{font:inherit}
       </button>
       <button class="folder" type="button" data-open="c-nina">
         <span class="f-art" aria-hidden="true"><span class="f-back"></span><span class="f-paper"></span><span class="f-paper p2"></span><span class="f-front"><span>/03</span><svg viewBox="0 0 14 14"><path d="M3 11L11 3M5 3h6v6"/></svg></span></span>
-        <span><span class="f-name">[03] Нина Евстафьева</span><span class="f-tags" style="display:block">Taplink · 16 страниц</span></span>
+        <span><span class="f-name">[03] Нина Евстафьева</span><span class="f-tags" style="display:block">Taplink · 16 страниц за 5 дней</span></span>
       </button>
       <button class="folder" type="button" data-open="c-bloom">
         <span class="f-art" aria-hidden="true"><span class="f-back"></span><span class="f-paper"></span><span class="f-paper p2"></span><span class="f-front"><span>/04</span><svg viewBox="0 0 14 14"><path d="M3 11L11 3M5 3h6v6"/></svg></span></span>
@@ -538,24 +548,49 @@ button.svc-card{font:inherit}
   </div>
 </dialog>
 
-<dialog id="c-nina" aria-labelledby="c-nina-t">
+<dialog id="c-nina" class="wide" aria-labelledby="c-nina-t">
   <div class="w-bar"><span class="up">/03 · Нина Евстафьева</span><button class="w-close" type="button" aria-label="Закрыть"><svg viewBox="0 0 14 14"><path d="M3 3l8 8M11 3l-8 8"/></svg></button></div>
-  <div class="w-body">
-    <div class="two">
-      <div style="display:flex;flex-direction:column;gap:16px">
-        <div class="meta"><span class="kind">реальный проект</span><span>2026</span><span>Taplink</span><span>16 страниц</span></div>
-        <h2 id="c-nina-t">Сайт семейного и детского психолога</h2>
-        <p>Нине нужен был сайт, где клиенты и коллеги-психологи быстро находят свою услугу.</p>
-        <ul>
-          <li>Главная с разделами для клиентов, психологов и сообщества</li>
-          <li>15 страниц услуг, групп и материалов</li>
-          <li>Цены карточками с кнопкой записи</li>
-          <li>Палитра «Хлопок и лесной зелёный», фото для шапки</li>
-          <li>Подсветка меню при прокрутке</li>
-        </ul>
-        <p><a href="https://ninaevstafeva.pro" target="_blank" rel="noopener">ninaevstafeva.pro ↗</a></p>
+  <div class="w-body anim">
+    <div class="meta"><span class="kind">сайт на Taplink</span><span>семейный и детский психолог</span><span>пришла через Profi</span></div>
+    <h2 id="c-nina-t">16 страниц за 5 дней для психолога, которая устала ждать</h2>
+    <div class="shot hero-shot"><img src="img/nina/hero.jpg" alt="Шапка сайта Нины Евстафьевой в двух вариантах фона" loading="lazy"></div>
+    <div class="pain">
+      <p>Нина уже заказывала сайт у другого специалиста. Делали долго, а результат её не устроил.</p>
+      <p>Ко мне она пришла с двумя просьбами: сделать быстро и не пропасть.</p>
+    </div>
+    <div class="sol">
+      <div class="sol-text"><span class="case-n">01</span><h3>Клиент и коллега сразу видят своё</h3><p>Главная разделена по людям: «Для вас и вашей семьи», «Психологам», «Профессиональная среда», «Полезные материалы». Никому не нужно разбираться в списке из 16 услуг.</p></div>
+      <div class="shot phone-crop"><img src="img/nina/sections.jpg" alt="Разделы главной: консультирование, семейная терапия, детский психолог, услуги для психологов" loading="lazy"></div>
+    </div>
+    <div class="sol flip">
+      <div class="sol-text"><span class="case-n">02</span><h3>Шапка, которой доверяют</h3><p>Психолога выбирают по лицу. Я вырезала фото Нины и подобрала фон под палитру сайта, сделала несколько вариантов на выбор. Спокойно, тепло и без фотостудийного глянца.</p></div>
+      <div class="shot"><img src="img/nina/photo-options.jpg" alt="Варианты фона для фото Нины в шапке" loading="lazy"></div>
+    </div>
+    <div class="case-mini">
+      <div><span class="case-n">03</span><h3>Цены видны сразу</h3><p>На 14 страницах цены оформлены карточками с кнопкой «Записаться». Не нужно писать и спрашивать.</p></div>
+      <div><span class="case-n">04</span><h3>Меню не теряется</h3><p>При прокрутке подсвечивается раздел, в котором сейчас человек.</p></div>
+      <div><span class="case-n">05</span><h3>Всё на Taplink</h3><p>Тексты и цены легко поменять в редакторе, программист не нужен.</p></div>
+    </div>
+    <div class="mob-show">
+      <div class="show-head"><div><span class="case-n">Мобильная версия</span><h3>Сайт, который открывают из Instagram</h3></div><p>Taplink живёт в ссылке профиля, поэтому главное здесь телефон. Экран листается сам, наведите, чтобы остановить.</p></div>
+      <div class="phones phones-one"><figure class="phone"><div class="phone-screen"><img src="img/nina/mob-index.jpg" alt="Главная сайта Нины на телефоне" loading="lazy"></div><figcaption>Главная</figcaption></figure></div>
+    </div>
+    <div class="kit">
+      <div class="show-head"><div><span class="case-n">UI-кит</span><h3>Палитра «Хлопок и лесной зелёный»</h3></div><p>Спокойные природные цвета, в которых не тревожно. Одна палитра на все 16 страниц.</p></div>
+      <div class="kit-grid">
+        <div class="kit-card kit-colors" style="grid-column:span 6"><span class="up">Цвета</span><div class="swatches">
+          <div><span style="background:#F2F3ED"></span><b>Хлопок</b><small>#F2F3ED</small></div>
+          <div><span style="background:#DADAD2"></span><b>Лён</b><small>#DADAD2</small></div>
+          <div><span style="background:#BDB7A7"></span><b>Песок</b><small>#BDB7A7</small></div>
+          <div><span style="background:#4C513A"></span><b>Лес</b><small>#4C513A</small></div>
+          <div><span style="background:#303426"></span><b>Мох</b><small>#303426</small></div>
+        </div></div>
       </div>
-      <div class="shot phone"><img src="case-nina-phone.jpg" alt="Главная сайта Нины на телефоне" loading="lazy"></div>
+    </div>
+    <div class="proof"><div class="proof-num"><b>5</b><span>дней</span></div><div class="proof-num"><b>24&nbsp;000&nbsp;₽</b><span>стоимость</span></div><div class="proof-num"><b>16</b><span>страниц</span></div><p>Нина нашла меня на Profi. Всё время работы я была на связи, и сайт был готов за 5 дней.</p></div>
+    <div class="gift">
+      <div><div class="up">Подарок</div><h3>Пришлите ссылку на ваш сайт или Taplink</h3><p>Бесплатно покажу 3 места, где вы теряете клиентов.</p></div>
+      <a class="btn js-write" href="https://t.me/oksergeevadesign" target="_blank" rel="noopener">Прислать ссылку ↗</a>
     </div>
   </div>
 </dialog>
