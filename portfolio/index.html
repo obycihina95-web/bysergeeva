@@ -186,6 +186,32 @@ dialog[open]{animation:winIn .28s cubic-bezier(.2,.8,.2,1)}
 @keyframes winIn{from{opacity:0;transform:translateY(14px) scale(.97)}to{opacity:1;transform:none}}
 .anim > *{opacity:0;animation:fadeUp .5s cubic-bezier(.2,.8,.2,1) forwards;animation-delay:calc(var(--i, 0) * 60ms + 120ms)}
 
+
+/* окно кейса */
+.case-lead{font-size:clamp(18px,2vw,24px)!important;line-height:1.3!important;letter-spacing:-.02em;max-width:34ch!important;font-weight:500}
+.case-ba{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.case-ba > div{border:1px solid var(--line);border-radius:14px;padding:16px 18px;display:flex;flex-direction:column;gap:10px}
+.case-ba .case-now{background:var(--active);color:var(--active-text);border-color:var(--active)}
+.case-ba .case-now li{color:inherit}
+.case-ba .case-was{color:var(--muted)}
+.case-ba .case-was li{text-decoration:line-through;text-decoration-color:color-mix(in srgb, var(--muted) 60%, transparent)}
+.case-feat{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.6fr);gap:24px;align-items:center;padding-top:6px}
+.case-feat.flip{grid-template-columns:minmax(0,1.6fr) minmax(0,1fr)}
+.case-feat.flip .case-feat-text{order:2}
+.case-feat-text{display:flex;flex-direction:column;gap:8px}
+.case-feat .shot{transition:transform .3s cubic-bezier(.2,.8,.2,1)}
+.case-feat .shot:hover{transform:scale(1.02) rotate(-.4deg)}
+.case-n{font-size:11px;color:var(--muted);font-variant-numeric:tabular-nums}
+.case-mini{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.case-mini > div{border:1px solid var(--line);border-radius:14px;padding:16px 18px;display:flex;flex-direction:column;gap:6px}
+.case-mini h3{margin:0!important}
+.case-mini p{font-size:13px!important;color:var(--muted)}
+@media (max-width:760px){
+  .case-ba,.case-mini{grid-template-columns:1fr}
+  .case-feat,.case-feat.flip{grid-template-columns:1fr}
+  .case-feat.flip .case-feat-text{order:0}
+}
+
 /* услуги карточками */
 dialog.wide{width:min(1120px, calc(100vw - 32px))}
 .svc-head{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,420px);gap:24px;align-items:end}
@@ -467,23 +493,51 @@ button.svc-card{font:inherit}
   </div>
 </dialog>
 
-<dialog id="c-baloven" aria-labelledby="c-baloven-t">
+<dialog id="c-baloven" class="wide" aria-labelledby="c-baloven-t">
   <div class="w-bar"><span class="up">/05 · Баловень</span><button class="w-close" type="button" aria-label="Закрыть"><svg viewBox="0 0 14 14"><path d="M3 3l8 8M11 3l-8 8"/></svg></button></div>
-  <div class="w-body">
-    <div class="meta"><span class="kind">концепция · одобрена клиентом</span><span>2026</span><span>10 страниц</span><span>Figma</span></div>
+  <div class="w-body anim">
+    <div class="meta"><span class="kind">концепция редизайна</span><span>клиент одобрил</span><span>10 страниц</span><span>2026</span></div>
     <h2 id="c-baloven-t">Арт-кафе «Баловень»</h2>
-    <div class="shot"><img src="img/baloven.jpg" alt="Главная страница концепции сайта «Баловень»" loading="lazy"></div>
-    <p>Сайт для кафе я сделала несколько лет назад. Со временем он устарел, и я сама предложила новую концепцию.</p>
-    <p>Днём здесь кухня, вечером сцена с театральными ужинами, квартирниками и киноклубом. На старом сайте всё лежало вперемешку, и гостю было трудно понять, где афиша и как попасть на вечер.</p>
-    <h3>Что сделала</h3>
-    <ul>
-      <li>Три пути на главной: «Вкусно поесть», «Сходить на вечер», «Устроить праздник»</li>
-      <li>Шкалу «Один день в Баловне»: от завтраков до вечера на сцене</li>
-      <li>Афишу с фильтрами и отдельную страницу для каждого формата</li>
-      <li>Две кнопки в карточке события: «Купить билет» и «Забронировать стол»</li>
-      <li>Меню, где бизнес-ланч сегодняшнего дня открывается сам</li>
-    </ul>
-    <p>Фирменные цвета, шрифты и фото сохранила. <a href="https://baloven-redesign.netlify.app" target="_blank" rel="noopener">Посмотреть концепцию ↗</a></p>
+    <p class="case-lead">Днём здесь кафе, вечером сцена. Я сделала сайт, на котором гость сразу понимает, зачем ему сюда, и видит, где забронировать стол.</p>
+    <div class="case-ba">
+      <div class="case-was">
+        <div class="up">Было</div>
+        <ul>
+          <li>Кухня и вечера вперемешку на одной длинной странице</li>
+          <li>Афиша теряется среди новостей</li>
+          <li>Непонятно, как попасть на вечер и где взять билет</li>
+        </ul>
+      </div>
+      <div class="case-now">
+        <div class="up">Стало</div>
+        <ul>
+          <li>У каждого гостя свой путь с первого экрана</li>
+          <li>Афиша с фильтрами и понятными датами</li>
+          <li>Бронь стола в каждой карточке события</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="case-feat">
+      <div class="case-feat-text"><span class="case-n">01</span><h3>Три пути с главной</h3><p>Гость сразу выбирает, зачем пришёл: вкусно поесть, сходить на вечер или устроить праздник. Каждая кнопка ведёт ровно туда, куда нужно.</p></div>
+      <div class="shot"><img src="img/baloven.jpg" alt="Главная нового сайта «Баловня»: три карточки «Вкусно поесть», «Сходить на вечер», «Устроить праздник»" loading="lazy"></div>
+    </div>
+    <div class="case-feat flip">
+      <div class="case-feat-text"><span class="case-n">02</span><h3>Афиша, где легко выбрать вечер</h3><p>Фильтры по форматам, дата и время крупно. В каждой карточке две кнопки: купить билет у организатора и забронировать стол в кафе.</p></div>
+      <div class="shot"><img src="img/baloven-afisha.jpg" alt="Афиша с фильтрами и кнопками «Купить билет» и «Забронировать стол»" loading="lazy"></div>
+    </div>
+    <div class="case-mini">
+      <div><span class="case-n">03</span><h3>Меню с ланчем на сегодня</h3><p>Бизнес-ланч сегодняшнего дня открывается сам, листать не нужно.</p></div>
+      <div><span class="case-n">04</span><h3>Банкеты отдельно</h3><p>Поводы, зал, этапы подготовки и заявка в одном месте.</p></div>
+      <div><span class="case-n">05</span><h3>Узнаваемый стиль</h3><p>Фирменные цвета, шрифты и фото кафе сохранила. Сайт новый, но свой.</p></div>
+    </div>
+
+    <div class="note"><p><b>Что это даёт кафе.</b> Сайт сам отвечает на главные вопросы гостя: что сегодня в меню, что на афише и как забронировать стол. Человек приходит уже с готовым решением.</p></div>
+
+    <div class="svc-cta">
+      <div><h3>Ваш сайт тоже устарел?</h3><p>Покажите его мне. Предложу, как обновить, чтобы клиентам было проще выбрать и записаться.</p></div>
+      <div class="actions"><a class="btn js-write" href="https://t.me/oksergeevadesign" target="_blank" rel="noopener">Написать ↗</a><a class="btn ghost" href="https://baloven-redesign.netlify.app" target="_blank" rel="noopener">Открыть концепцию ↗</a></div>
+    </div>
   </div>
 </dialog>
 
