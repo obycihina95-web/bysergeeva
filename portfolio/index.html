@@ -144,9 +144,22 @@ ol.flow span{color:var(--muted);font-size:13px}
 details{border-bottom:1px solid var(--line)}
 summary{cursor:pointer;list-style:none;display:flex;justify-content:space-between;gap:16px;padding:14px 0;font-weight:700;font-size:15px}
 summary::-webkit-details-marker{display:none}
-summary::after{content:"+";font-weight:400;font-size:20px;line-height:1}
-details[open] summary::after{content:"–"}
+summary::after{content:"+";font-weight:400;font-size:22px;line-height:1;transition:transform .25s cubic-bezier(.2,.8,.2,1)}
+details[open] summary::after{transform:rotate(45deg)}
+summary:hover{padding-left:6px}
+summary{transition:padding .2s}
 details p{padding-bottom:14px}
+details[open] p{animation:fadeUp .35s cubic-bezier(.2,.8,.2,1)}
+.contacts > div{position:relative;border-bottom:0!important}
+.contacts > div::after{content:"";position:absolute;left:0;right:0;bottom:0;height:1px;background:var(--line);transform-origin:left;transform:scaleX(0);animation:line .7s cubic-bezier(.2,.8,.2,1) forwards;animation-delay:calc(var(--i, 0) * 90ms + 300ms)}
+.contacts.anim > *{animation-name:slideIn}
+.contacts > div:hover b{transform:translateX(-4px)}
+.contacts b{transition:transform .2s}
+.online{display:inline-flex;align-items:center;font-size:11px;text-transform:uppercase;letter-spacing:.05em;border:1px solid var(--line);border-radius:999px;padding:6px 12px 6px 10px;align-self:flex-start}
+.online .dot{animation:ping 1.8s ease-out infinite}
+@keyframes line{to{transform:scaleX(1)}}
+@keyframes slideIn{from{opacity:0;transform:translateX(-18px)}to{opacity:1;transform:none}}
+@keyframes ping{0%{box-shadow:0 0 0 0 rgb(63 174 90 / .5)}80%,100%{box-shadow:0 0 0 8px rgb(63 174 90 / 0)}}
 .contacts{display:grid;gap:0}
 .contacts div{display:flex;justify-content:space-between;gap:12px;padding:12px 0;border-bottom:1px solid var(--line);font-size:14px}
 .contacts b{user-select:all}
@@ -194,10 +207,11 @@ button.svc-card{font:inherit}
 .svc-card.open .svc-plus{transform:rotate(45deg)}
 .svc-card.open{border-color:var(--ink)}
 @media (hover:hover){
-  .svc-card:hover{transform:translateY(-3px);border-color:var(--ink)}
-  .svc-card:hover .svc-tags{opacity:1;transform:none}
-  .svc-card:hover .svc-desc{opacity:0}
-  .svc-card:hover .svc-plus{transform:rotate(45deg)}
+  button.svc-card:hover{transform:translateY(-3px);border-color:var(--ink)}
+  button.svc-card:hover .svc-tags{opacity:1;transform:none}
+  button.svc-card:hover .svc-desc{opacity:0}
+  button.svc-card:hover .svc-plus{transform:rotate(45deg)}
+  .svc-accent:hover{transform:translateY(-3px);box-shadow:0 14px 30px rgb(0 0 0 / .18)}
 }
 .svc-price{margin-top:14px;padding-top:12px;border-top:1px dashed var(--line);font-size:15px;font-weight:700;letter-spacing:-.02em;display:flex;justify-content:space-between;align-items:baseline;gap:8px;flex-wrap:wrap}
 .svc-price small{font-size:10px;font-weight:500;color:var(--muted);letter-spacing:0}
@@ -209,7 +223,6 @@ button.svc-card{font:inherit}
 .svc-accent .svc-tags{opacity:1;transform:none;gap:7px}
 .svc-accent .svc-tags li{border-color:color-mix(in srgb, var(--panel) 40%, transparent);padding:8px 12px;font-size:11px}
 .svc-accent .svc-price{border-color:color-mix(in srgb, var(--panel) 40%, transparent);font-size:17px}
-.svc-accent:hover{transform:none}
 .svc-wide{grid-column:1/-1;min-height:0}
 .svc-wide .svc-body{display:flex;flex-wrap:wrap;gap:8px 16px;align-items:center}
 .svc-wide .svc-tags{opacity:1;transform:none}
@@ -605,7 +618,7 @@ button.svc-card{font:inherit}
   <div class="w-bar"><span class="up">Вопросы</span><button class="w-close" type="button" aria-label="Закрыть"><svg viewBox="0 0 14 14"><path d="M3 3l8 8M11 3l-8 8"/></svg></button></div>
   <div class="w-body">
     <h2 id="w-faq-t">Частые вопросы</h2>
-    <div>
+    <div class="anim">
       <details><summary>Почему сайт под ключ стоит от 60 000 ₽?</summary><p>Это несколько недель работы: разобраться в нише, собрать структуру, нарисовать дизайн для компьютера и телефона, собрать сайт, настроить формы и сервисы, запустить.</p></details>
       <details><summary>Можно дешевле?</summary><p>Можно уменьшить объём: меньше страниц, проще анимация, запуск по частям или Taplink вместо сайта. Напишите ваш бюджет, предложу, что в него поместится.</p></details>
       <details><summary>Можно платить частями?</summary><p>Да, 20/40/40 или 50/50. Предоплата обязательна.</p></details>
@@ -622,10 +635,11 @@ button.svc-card{font:inherit}
 
 <dialog id="w-contact" aria-labelledby="w-contact-t">
   <div class="w-bar"><span class="up">Контакты</span><button class="w-close" type="button" aria-label="Закрыть"><svg viewBox="0 0 14 14"><path d="M3 3l8 8M11 3l-8 8"/></svg></button></div>
-  <div class="w-body">
+  <div class="w-body anim">
+    <span class="online"><span class="dot" aria-hidden="true"></span>На связи · беру проекты</span>
     <h2 id="w-contact-t">Расскажите о своём проекте</h2>
     <p>Напишите, чем занимаетесь и какой сайт нужен. Отвечу в течение суток и подскажу, с чего лучше начать.</p>
-    <div class="contacts">
+    <div class="contacts anim">
       <div><span>Telegram</span><b>@oksergeevadesign</b></div>
       <div><span>Почта</span><b>oksana159768@mail.ru</b></div>
       <div><span>Instagram</span><b>@bysergeeva_design</b></div>
@@ -676,7 +690,7 @@ button.svc-card{font:inherit}
   });
   // перезапуск анимаций при каждом открытии окна
   function replay(d){
-    d.querySelectorAll('.anim,.about-photo,.chips').forEach(function(el){
+    d.querySelectorAll('.anim,.about-photo,.chips,.contacts').forEach(function(el){
       el.style.display='none'; void el.offsetWidth; el.style.display='';
     });
   }
