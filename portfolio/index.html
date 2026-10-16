@@ -299,6 +299,21 @@ dialog[open]{animation:winIn .28s cubic-bezier(.2,.8,.2,1)}
 .case-mini p{font-size:13px!important;color:var(--muted)}
 @media (max-width:760px){.case-mini{grid-template-columns:1fr}}
 
+.smap{background:var(--active);color:var(--active-text);border-radius:18px;padding:24px;display:flex;flex-direction:column;gap:20px}
+.smap-head{display:grid;grid-template-columns:auto minmax(0,1fr);gap:20px;align-items:center}
+.smap-head > b{font-size:clamp(72px,10vw,128px);line-height:.8;letter-spacing:-.07em}
+.smap-head h3{font-size:clamp(20px,2.4vw,30px)!important;letter-spacing:-.03em;margin:0 0 8px!important;color:inherit}
+.smap-head p{color:inherit!important;opacity:.8;font-size:14px!important}
+.smap-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px}
+.smap-col{display:flex;flex-direction:column;gap:8px;min-width:0}
+.smap-col .up{opacity:.65}
+.w-body .smap-col ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:6px}
+.smap-col li{background:var(--panel);color:var(--ink);border-radius:10px;padding:9px 10px;font-size:12px!important;line-height:1.25;display:flex;gap:8px;align-items:baseline;opacity:0;animation:pop .45s cubic-bezier(.3,1.6,.5,1) forwards;animation-delay:calc(var(--i) * 45ms + 400ms);transition:transform .2s}
+.smap-col li:hover{transform:translateX(3px)}
+.smap-col li span{font-size:10px;color:var(--muted);font-variant-numeric:tabular-nums}
+@media (max-width:900px){.smap-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:520px){.smap-head{grid-template-columns:1fr}.smap-grid{grid-template-columns:1fr}}
+
 /* услуги карточками */
 dialog.wide{width:min(1120px, calc(100vw - 32px))}
 .svc-head{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,420px);gap:24px;align-items:end}
@@ -553,7 +568,10 @@ button.svc-card{font:inherit}
   <div class="w-body anim">
     <div class="meta"><span class="kind">сайт на Taplink</span><span>семейный и детский психолог</span><span>пришла через Profi</span></div>
     <h2 id="c-nina-t">16 страниц за 5 дней для психолога, которая устала ждать</h2>
-    <div class="shot hero-shot"><img src="img/nina/hero.jpg" alt="Шапка сайта Нины Евстафьевой в двух вариантах фона" loading="lazy"></div>
+    <div class="smap">
+      <div class="smap-head"><b>16</b><div><h3>страниц, и у каждой услуги своя</h3><p>У Нины много направлений: консультации, семейная и детская терапия, группы, супервизия, киноклуб, материалы. Раньше всё это пришлось бы искать в одной ленте. Теперь у каждого направления отдельная страница с описанием, ценой и кнопкой записи.</p></div></div>
+      <div class="smap-grid"><div class="smap-col"><div class="up">Клиентам</div><ul><li style="--i:1"><span>01</span>Консультирование</li><li style="--i:2"><span>02</span>Семейная терапия</li><li style="--i:3"><span>03</span>Детский психолог</li><li style="--i:4"><span>04</span>Терапевтические группы</li></ul></div><div class="smap-col"><div class="up">Психологам</div><ul><li style="--i:5"><span>05</span>Супервизия</li><li style="--i:6"><span>06</span>Обучающая личная терапия</li><li style="--i:7"><span>07</span>Наставничество</li><li style="--i:8"><span>08</span>Группы практики</li></ul></div><div class="smap-col"><div class="up">Сообщество</div><ul><li style="--i:9"><span>09</span>Киноклуб для психологов</li><li style="--i:10"><span>10</span>Исследование сказок</li><li style="--i:11"><span>11</span>Вебинары</li></ul></div><div class="smap-col"><div class="up">Материалы</div><ul><li style="--i:12"><span>12</span>Чек-листы</li><li style="--i:13"><span>13</span>Схемы и шаблоны</li></ul></div><div class="smap-col"><div class="up">Основа</div><ul><li style="--i:14"><span>14</span>Главная</li><li style="--i:15"><span>15</span>Обо мне</li><li style="--i:16"><span>16</span>Политика конфиденциальности</li></ul></div></div>
+    </div>
     <div class="pain">
       <p>Нина уже заказывала сайт у другого специалиста. Делали долго, а результат её не устроил.</p>
       <p>Ко мне она пришла с двумя просьбами: сделать быстро и не пропасть.</p>
@@ -562,14 +580,10 @@ button.svc-card{font:inherit}
       <div class="sol-text"><span class="case-n">01</span><h3>Клиент и коллега сразу видят своё</h3><p>Главная разделена по людям: «Для вас и вашей семьи», «Психологам», «Профессиональная среда», «Полезные материалы». Никому не нужно разбираться в списке из 16 услуг.</p></div>
       <div class="shot phone-crop"><img src="img/nina/sections.jpg" alt="Разделы главной: консультирование, семейная терапия, детский психолог, услуги для психологов" loading="lazy"></div>
     </div>
-    <div class="sol flip">
-      <div class="sol-text"><span class="case-n">02</span><h3>Шапка, которой доверяют</h3><p>Психолога выбирают по лицу. Я вырезала фото Нины и подобрала фон под палитру сайта, сделала несколько вариантов на выбор. Спокойно, тепло и без фотостудийного глянца.</p></div>
-      <div class="shot"><img src="img/nina/photo-options.jpg" alt="Варианты фона для фото Нины в шапке" loading="lazy"></div>
-    </div>
     <div class="case-mini">
-      <div><span class="case-n">03</span><h3>Цены видны сразу</h3><p>На 14 страницах цены оформлены карточками с кнопкой «Записаться». Не нужно писать и спрашивать.</p></div>
-      <div><span class="case-n">04</span><h3>Меню не теряется</h3><p>При прокрутке подсвечивается раздел, в котором сейчас человек.</p></div>
-      <div><span class="case-n">05</span><h3>Всё на Taplink</h3><p>Тексты и цены легко поменять в редакторе, программист не нужен.</p></div>
+      <div><span class="case-n">02</span><h3>Цены видны сразу</h3><p>На 14 страницах цены оформлены карточками с кнопкой «Записаться». Не нужно писать и спрашивать.</p></div>
+      <div><span class="case-n">03</span><h3>Меню не теряется</h3><p>При прокрутке подсвечивается раздел, в котором сейчас человек.</p></div>
+      <div><span class="case-n">04</span><h3>Всё на Taplink</h3><p>Тексты и цены легко поменять в редакторе, программист не нужен.</p></div>
     </div>
     <div class="mob-show">
       <div class="show-head"><div><span class="case-n">Мобильная версия</span><h3>Сайт, который открывают из Instagram</h3></div><p>Taplink живёт в ссылке профиля, поэтому главное здесь телефон. Экран листается сам, наведите, чтобы остановить.</p></div>
@@ -980,7 +994,7 @@ button.svc-card{font:inherit}
   });
   // перезапуск анимаций при каждом открытии окна
   function replay(d){
-    d.querySelectorAll('.anim,.about-photo,.chips,.contacts').forEach(function(el){
+    d.querySelectorAll('.anim,.about-photo,.chips,.contacts,.smap-grid').forEach(function(el){
       el.style.display='none'; void el.offsetWidth; el.style.display='';
     });
   }
