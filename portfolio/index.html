@@ -227,6 +227,60 @@ dialog[open]{animation:winIn .28s cubic-bezier(.2,.8,.2,1)}
   .ba{aspect-ratio:4/5}
 }
 
+.show-head{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:20px;align-items:end;margin-bottom:14px}
+.show-head h3{font-size:clamp(20px,2.4vw,30px)!important;line-height:1.05;letter-spacing:-.03em;margin:6px 0 0!important;font-weight:700}
+.show-head p{font-size:13px!important;color:var(--muted)}
+.pg-tabs{display:flex;gap:6px;overflow-x:auto;padding-bottom:10px;scrollbar-width:none}
+.pg-tab{flex:none;border:1px solid var(--line);background:transparent;color:var(--ink);border-radius:999px;padding:8px 14px;font-size:12px;transition:background .2s,color .2s}
+.pg-tab.on{background:var(--active);color:var(--active-text);border-color:var(--active)}
+.browser{border:1px solid var(--line);border-radius:14px;overflow:hidden;background:#fff;box-shadow:0 20px 50px rgb(0 0 0 / .12)}
+.browser-bar{display:flex;align-items:center;gap:6px;padding:10px 12px;background:color-mix(in srgb, var(--ink) 6%, var(--panel));border-bottom:1px solid var(--line)}
+.browser-bar i{width:9px;height:9px;border-radius:50%;background:var(--line)}
+.browser-url{margin-left:10px;flex:1;font-size:11px;color:var(--muted);background:var(--panel);border-radius:6px;padding:4px 10px;max-width:340px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.browser-view{height:min(560px,70vh);overflow-y:auto;overscroll-behavior:contain}
+.browser-view img{display:block;width:100%;height:auto;transition:opacity .25s}
+.browser-view img.swap{opacity:0}
+.phones{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;justify-items:center}
+.phone{margin:0;display:flex;flex-direction:column;align-items:center;gap:10px;width:100%;max-width:230px}
+.phone-screen{position:relative;width:100%;aspect-ratio:9/18.5;border:8px solid var(--active);border-radius:30px;overflow:hidden;background:#fff;box-shadow:0 18px 40px rgb(0 0 0 / .15)}
+.phone-screen::before{content:"";position:absolute;top:6px;left:50%;transform:translateX(-50%);width:34%;height:14px;border-radius:999px;background:var(--active);z-index:2}
+.phone-screen img{display:block;width:100%;height:auto;animation:phoneScroll 30s ease-in-out infinite alternate}
+.phone:hover img{animation-play-state:paused}
+@keyframes phoneScroll{0%,6%{transform:translateY(0)}94%,100%{transform:translateY(calc(-100% + 420px))}}
+.phone figcaption{font-size:11px;text-transform:uppercase;letter-spacing:.05em;color:var(--muted)}
+.kit-grid{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:12px}
+.kit-card{border:1px solid var(--line);border-radius:14px;padding:16px;display:flex;flex-direction:column;gap:12px;min-width:0;background:color-mix(in srgb, var(--panel) 85%, #fff)}
+.kit-card img{display:block;width:100%;height:auto;border-radius:8px}
+.kit-colors{grid-column:span 4}
+.kit-type{grid-column:span 2}
+.kit-ui{grid-column:span 3}
+.kit-event{grid-column:span 3;justify-content:center}
+.kit-format{grid-column:span 6;flex-direction:row;align-items:center;gap:18px}
+.kit-format img{max-width:200px}
+.swatches{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px}
+.swatches div{display:flex;flex-direction:column;gap:3px;font-size:12px}
+.swatches span{aspect-ratio:1;border-radius:12px;border:1px solid rgb(0 0 0 / .06);transition:transform .25s cubic-bezier(.3,1.6,.5,1)}
+.swatches div:hover span{transform:scale(1.07) rotate(-3deg)}
+.swatches small{font-size:10px;color:var(--muted);font-variant-numeric:tabular-nums}
+.type-big{font-family:Constantia,"Bodoni 72",Georgia,serif;font-size:44px;line-height:1;color:#fd6901;text-transform:uppercase}
+.type-text{font-size:14px!important}
+.kit-card small{font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:.04em}
+.kit-btns{display:flex;flex-wrap:wrap;gap:8px}
+.kb{font-family:Arial,sans-serif;font-size:11px;letter-spacing:.06em;text-transform:uppercase;border-radius:999px;padding:11px 18px;border:1px solid transparent}
+.kb-o{background:#fd6901;color:#fff}
+.kb-g{border-color:#1f2938;color:#1f2938;background:#fff}
+.kb-w{background:#fff;color:#1f2938;box-shadow:0 2px 10px rgb(0 0 0 / .1)}
+@media (max-width:760px){
+  .show-head{grid-template-columns:1fr}
+  .phones{display:flex;gap:14px;overflow-x:auto;justify-content:flex-start;padding-bottom:8px;scroll-snap-type:x mandatory}
+  .phone{flex:0 0 200px;scroll-snap-align:start}
+  @keyframes phoneScroll{0%,6%{transform:translateY(0)}94%,100%{transform:translateY(calc(-100% + 380px))}}
+  .kit-grid{grid-template-columns:1fr}
+  .kit-colors,.kit-type,.kit-ui,.kit-event,.kit-format{grid-column:auto}
+  .kit-format{flex-direction:column;align-items:flex-start}
+  .swatches{grid-template-columns:repeat(5,minmax(0,1fr));gap:6px}
+}
+
 /* услуги карточками */
 dialog.wide{width:min(1120px, calc(100vw - 32px))}
 .svc-head{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,420px);gap:24px;align-items:end}
@@ -539,6 +593,55 @@ button.svc-card{font:inherit}
       <div class="shot"><img src="img/baloven-lunch.jpg" alt="Бизнес-ланч с отмеченным сегодняшним днём" loading="lazy"></div>
     </div>
 
+
+    <div class="site-show">
+      <div class="show-head"><div><span class="case-n">Весь сайт</span><h3>10 страниц, каждая со своей задачей</h3></div><p>Переключайте страницы и листайте внутри окна.</p></div>
+      <div class="pg-tabs" role="tablist"><button type="button" class="pg-tab on" data-src="img/baloven/full-index.jpg" data-url="baloven-redesign.netlify.app/">Главная</button><button type="button" class="pg-tab" data-src="img/baloven/full-menu.jpg" data-url="baloven-redesign.netlify.app/menu">Меню</button><button type="button" class="pg-tab" data-src="img/baloven/full-afisha.jpg" data-url="baloven-redesign.netlify.app/afisha">Афиша</button><button type="button" class="pg-tab" data-src="img/baloven/full-kvartirniki.jpg" data-url="baloven-redesign.netlify.app/afisha/kvartirniki">Квартирники</button><button type="button" class="pg-tab" data-src="img/baloven/full-banquets.jpg" data-url="baloven-redesign.netlify.app/banquets">Банкеты</button><button type="button" class="pg-tab" data-src="img/baloven/full-about.jpg" data-url="baloven-redesign.netlify.app/about">О нас</button><button type="button" class="pg-tab" data-src="img/baloven/full-booking.jpg" data-url="baloven-redesign.netlify.app/booking">Бронирование</button></div>
+      <div class="browser">
+        <div class="browser-bar"><i></i><i></i><i></i><span class="browser-url">baloven-redesign.netlify.app/</span></div>
+        <div class="browser-view" tabindex="0" aria-label="Страница сайта, можно листать"><img src="img/baloven/full-index.jpg" alt="Страница сайта «Баловня» целиком" loading="lazy"></div>
+      </div>
+    </div>
+
+    <div class="mob-show">
+      <div class="show-head"><div><span class="case-n">Мобильная версия</span><h3>Удобно с телефона, откуда приходит большинство гостей</h3></div><p>Каждую страницу я рисую отдельно под экран телефона.</p></div>
+      <div class="phones">
+        <figure class="phone"><div class="phone-screen"><img src="img/baloven/mob-index.jpg" alt="Главная на телефоне" loading="lazy"></div><figcaption>Главная</figcaption></figure>
+        <figure class="phone"><div class="phone-screen"><img src="img/baloven/mob-afisha.jpg" alt="Афиша на телефоне" loading="lazy" style="animation-delay:-6s"></div><figcaption>Афиша</figcaption></figure>
+        <figure class="phone"><div class="phone-screen"><img src="img/baloven/mob-menu.jpg" alt="Меню на телефоне" loading="lazy" style="animation-delay:-12s"></div><figcaption>Меню</figcaption></figure>
+      </div>
+    </div>
+
+    <div class="kit">
+      <div class="show-head"><div><span class="case-n">UI-кит</span><h3>Дизайн-система, чтобы сайт рос без хаоса</h3></div><p>Цвета, шрифты и готовые блоки. Новую страницу или событие можно собрать за минуты, и всё будет в одном стиле.</p></div>
+      <div class="kit-grid">
+        <div class="kit-card kit-colors">
+          <span class="up">Цвета бренда</span>
+          <div class="swatches">
+            <div><span style="background:#75c3ff"></span><b>Небо</b><small>#75C3FF</small></div>
+            <div><span style="background:#fd6901"></span><b>Апельсин</b><small>#FD6901</small></div>
+            <div><span style="background:#e8891d"></span><b>Янтарь</b><small>#E8891D</small></div>
+            <div><span style="background:#eaa87a"></span><b>Персик</b><small>#EAA87A</small></div>
+            <div><span style="background:#1f2938"></span><b>Вечер</b><small>#1F2938</small></div>
+          </div>
+        </div>
+        <div class="kit-card kit-type">
+          <span class="up">Шрифты</span>
+          <div class="type-big">Баловень</div>
+          <small>Bergamasco · Constantia: заголовки</small>
+          <p class="type-text">Авторская кухня днём, сцена вечером.</p>
+          <small>TildaSans: текст</small>
+        </div>
+        <div class="kit-card kit-ui">
+          <span class="up">Кнопки и фильтры</span>
+          <div class="kit-btns"><span class="kb kb-o">Купить билет ↗</span><span class="kb kb-g">Забронировать стол</span><span class="kb kb-w">Забронировать</span></div>
+          <img src="img/baloven/kit-filters.png" alt="Фильтры афиши" loading="lazy">
+        </div>
+        <div class="kit-card kit-event"><span class="up">Карточка события</span><img src="img/baloven/kit-event.jpg" alt="Карточка события в афише" loading="lazy"></div>
+        <div class="kit-card kit-format"><span class="up">Карточка формата</span><img src="img/baloven/kit-format.jpg" alt="Карточка формата вечера" loading="lazy"></div>
+      </div>
+    </div>
+
     <div class="proof">
       <div class="proof-num"><b>3</b><span>недели</span></div>
       <div class="proof-num"><b>55&nbsp;000&nbsp;₽</b><span>стоимость редизайна</span></div>
@@ -780,6 +883,28 @@ button.svc-card{font:inherit}
     setTimeout(function(){ba.classList.remove('hint')},3500);
   }
 
+  // просмотр страниц сайта в окне браузера
+  var autoScroll=null;
+  function stopAuto(){ if(autoScroll){cancelAnimationFrame(autoScroll);autoScroll=null} }
+  function startAuto(view){
+    stopAuto(); if(window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    var t0=null, wait=900;
+    function step(t){ if(!t0) t0=t; if(t-t0>wait){ view.scrollTop+=0.6; if(view.scrollTop+view.clientHeight>=view.scrollHeight-1) return stopAuto(); }
+      autoScroll=requestAnimationFrame(step); }
+    autoScroll=requestAnimationFrame(step);
+  }
+  document.querySelectorAll('.site-show').forEach(function(sh){
+    var view=sh.querySelector('.browser-view'), img=view.querySelector('img'), url=sh.querySelector('.browser-url');
+    ['wheel','touchstart','pointerdown','keydown'].forEach(function(ev){view.addEventListener(ev,stopAuto,{passive:true})});
+    sh.querySelectorAll('.pg-tab').forEach(function(b){
+      b.addEventListener('click',function(){
+        sh.querySelectorAll('.pg-tab').forEach(function(x){x.classList.toggle('on',x===b)});
+        img.classList.add('swap');
+        setTimeout(function(){ img.src=b.dataset.src; url.textContent=b.dataset.url; view.scrollTop=0; img.classList.remove('swap'); startAuto(view); },200);
+      });
+    });
+  });
+
   // окна
   var dock=document.querySelectorAll('.dock button');
   function mark(id){dock.forEach(function(b){b.classList.toggle('on',(b.dataset.open||b.dataset.dock)===id)})}
@@ -787,13 +912,13 @@ button.svc-card{font:inherit}
     b.addEventListener('click',function(){
       document.querySelectorAll('dialog[open]').forEach(function(d){d.close()});
       var d=document.getElementById(b.dataset.open); if(!d) return;
-      d.showModal(); replay(d); baHint(d); d.querySelector('.w-body').scrollTop=0; mark(d.id);
+      d.showModal(); replay(d); baHint(d); stopAuto(); var bv=d.querySelector('.browser-view'); if(bv){bv.scrollTop=0; startAuto(bv);} d.querySelector('.w-body').scrollTop=0; mark(d.id);
     });
   });
   document.querySelectorAll('dialog').forEach(function(d){
     d.querySelector('.w-close').addEventListener('click',function(){d.close()});
     d.addEventListener('click',function(e){if(e.target===d) d.close()});
-    d.addEventListener('close',function(){mark('top')});
+    d.addEventListener('close',function(){mark('top'); stopAuto();});
   });
   document.querySelector('[data-dock="top"]').addEventListener('click',function(){
     document.querySelectorAll('dialog[open]').forEach(function(d){d.close()});
