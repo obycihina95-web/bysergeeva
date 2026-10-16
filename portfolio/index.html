@@ -188,28 +188,43 @@ dialog[open]{animation:winIn .28s cubic-bezier(.2,.8,.2,1)}
 
 
 /* окно кейса */
-.case-lead{font-size:clamp(18px,2vw,24px)!important;line-height:1.3!important;letter-spacing:-.02em;max-width:34ch!important;font-weight:500}
-.case-ba{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-.case-ba > div{border:1px solid var(--line);border-radius:14px;padding:16px 18px;display:flex;flex-direction:column;gap:10px}
-.case-ba .case-now{background:var(--active);color:var(--active-text);border-color:var(--active)}
-.case-ba .case-now li{color:inherit}
-.case-ba .case-was{color:var(--muted)}
-.case-ba .case-was li{text-decoration:line-through;text-decoration-color:color-mix(in srgb, var(--muted) 60%, transparent)}
-.case-feat{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.6fr);gap:24px;align-items:center;padding-top:6px}
-.case-feat.flip{grid-template-columns:minmax(0,1.6fr) minmax(0,1fr)}
-.case-feat.flip .case-feat-text{order:2}
-.case-feat-text{display:flex;flex-direction:column;gap:8px}
-.case-feat .shot{transition:transform .3s cubic-bezier(.2,.8,.2,1)}
-.case-feat .shot:hover{transform:scale(1.02) rotate(-.4deg)}
 .case-n{font-size:11px;color:var(--muted);font-variant-numeric:tabular-nums}
-.case-mini{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
-.case-mini > div{border:1px solid var(--line);border-radius:14px;padding:16px 18px;display:flex;flex-direction:column;gap:6px}
-.case-mini h3{margin:0!important}
-.case-mini p{font-size:13px!important;color:var(--muted)}
+.ba{position:relative;border:1px solid var(--line);border-radius:14px;overflow:hidden;aspect-ratio:16/10;max-width:100%;background:var(--panel);--pos:50%;user-select:none}
+.ba-after,.ba-before{position:absolute;inset:0}
+.ba-after img{width:100%;height:100%;object-fit:cover;object-position:top;display:block}
+.ba-before{clip-path:inset(0 calc(100% - var(--pos)) 0 0);background:color-mix(in srgb, var(--ink) 8%, var(--panel))}
+.ba-empty{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;color:var(--muted);font-size:13px}
+.ba-tag{position:absolute;top:12px;font-size:10px;text-transform:uppercase;letter-spacing:.05em;background:var(--active);color:var(--active-text);padding:5px 10px;border-radius:999px}
+.ba-after .ba-tag{right:12px}.ba-before .ba-tag{left:12px}
+.ba-handle{position:absolute;top:0;bottom:0;left:var(--pos);width:2px;background:var(--active);transform:translateX(-1px);pointer-events:none}
+.ba-handle svg{position:absolute;top:50%;left:50%;width:40px;height:40px;padding:9px;transform:translate(-50%,-50%);background:var(--active);color:var(--active-text);border-radius:50%;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;box-shadow:0 6px 18px rgb(0 0 0 / .2)}
+.ba-range{position:absolute;inset:0;width:100%;height:100%;margin:0;opacity:0;cursor:ew-resize}
+.ba.hint .ba-handle,.ba.hint .ba-before{transition:left .9s cubic-bezier(.5,0,.2,1), clip-path .9s cubic-bezier(.5,0,.2,1)}
+.pain{border-left:3px solid var(--active);padding:4px 0 4px 18px;display:flex;flex-direction:column;gap:8px}
+.pain p{font-size:clamp(17px,1.8vw,21px)!important;line-height:1.35!important;letter-spacing:-.015em;font-weight:500;max-width:52ch!important}
+.pain p:last-child{color:var(--muted)}
+.sol{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.5fr);gap:28px;align-items:center}
+.sol.flip{grid-template-columns:minmax(0,1.5fr) minmax(0,1fr)}
+.sol.flip .sol-text{order:2}
+.sol-text{display:flex;flex-direction:column;gap:8px}
+.sol-text h3{font-size:clamp(20px,2.2vw,28px)!important;line-height:1.05;letter-spacing:-.03em;margin:0!important;font-weight:700}
+.sol .shot{transition:transform .35s cubic-bezier(.2,.8,.2,1), box-shadow .35s}
+.sol .shot:hover{transform:translateY(-4px) rotate(-.5deg);box-shadow:0 18px 40px rgb(0 0 0 / .12)}
+.proof{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;background:var(--active);color:var(--active-text);border-radius:16px;padding:22px}
+.proof-num{display:flex;flex-direction:column;gap:4px}
+.proof-num b{font-size:clamp(28px,3.4vw,44px);line-height:.95;letter-spacing:-.05em}
+.proof-num span{font-size:11px;text-transform:uppercase;letter-spacing:.04em;opacity:.75}
+.proof p{grid-column:1/-1;color:inherit!important;opacity:.85;font-size:13px!important;padding-top:14px;border-top:1px solid color-mix(in srgb, var(--active-text) 25%, transparent);max-width:none!important}
+.gift{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:20px;align-items:center;border:1.5px dashed var(--ink);border-radius:16px;padding:20px 22px;position:relative}
+.gift h3{font-size:clamp(20px,2.2vw,26px)!important;letter-spacing:-.03em;margin:6px 0 4px!important}
+.gift p{font-size:14px!important}
+.gift .btn{animation:nudge 2.4s 1.5s ease-in-out infinite}
+@keyframes nudge{0%,100%{transform:none}8%{transform:translateY(-3px)}16%{transform:none}}
 @media (max-width:760px){
-  .case-ba,.case-mini{grid-template-columns:1fr}
-  .case-feat,.case-feat.flip{grid-template-columns:1fr}
-  .case-feat.flip .case-feat-text{order:0}
+  .sol,.sol.flip,.gift{grid-template-columns:1fr}
+  .sol.flip .sol-text{order:0}
+  .proof{grid-template-columns:1fr 1fr}
+  .ba{aspect-ratio:4/5}
 }
 
 /* услуги карточками */
@@ -496,47 +511,48 @@ button.svc-card{font:inherit}
 <dialog id="c-baloven" class="wide" aria-labelledby="c-baloven-t">
   <div class="w-bar"><span class="up">/05 · Баловень</span><button class="w-close" type="button" aria-label="Закрыть"><svg viewBox="0 0 14 14"><path d="M3 3l8 8M11 3l-8 8"/></svg></button></div>
   <div class="w-body anim">
-    <div class="meta"><span class="kind">концепция редизайна</span><span>клиент одобрил</span><span>10 страниц</span><span>2026</span></div>
-    <h2 id="c-baloven-t">Арт-кафе «Баловень»</h2>
-    <p class="case-lead">Днём здесь кафе, вечером сцена. Я сделала сайт, на котором гость сразу понимает, зачем ему сюда, и видит, где забронировать стол.</p>
-    <div class="case-ba">
-      <div class="case-was">
-        <div class="up">Было</div>
-        <ul>
-          <li>Кухня и вечера вперемешку на одной длинной странице</li>
-          <li>Афиша теряется среди новостей</li>
-          <li>Непонятно, как попасть на вечер и где взять билет</li>
-        </ul>
+    <div class="meta"><span class="kind">редизайн</span><span>арт-кафе · Москва, м. Павелецкая</span><span>работаем с 2024 года</span></div>
+    <h2 id="c-baloven-t">Сайт, на котором «зайду поесть» превращается в «приду на вечер»</h2>
+
+    <div class="ba" data-ba>
+      <div class="ba-after"><img src="img/baloven.jpg" alt="Новый сайт «Баловня»" loading="lazy"><span class="ba-tag">стало</span></div>
+      <div class="ba-before"><div class="ba-empty"><span class="todo">скриншот старого сайта</span><span>cafe-baloven.com</span></div><span class="ba-tag">было</span></div>
+      <span class="ba-handle" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M9 6l-6 6 6 6M15 6l6 6-6 6"/></svg></span>
+      <input class="ba-range" type="range" min="0" max="100" value="50" aria-label="Сравнить старый и новый сайт">
+    </div>
+
+    <div class="pain">
+      <p>У кафе две жизни: днём кухня, вечером сцена с квартирниками и театральными ужинами. А сайт показывал всё одной лентой.</p>
+      <p>Гость, который искал квартирник, натыкался на бизнес-ланч и уходил.</p>
+    </div>
+
+    <div class="sol">
+      <div class="sol-text"><span class="case-n">01</span><h3>Каждый гость сразу у своего</h3><p>Три входа на главной: «Вкусно поесть», «Сходить на вечер», «Устроить праздник». Никто не ищет нужное в ленте.</p></div>
+      <div class="shot"><img src="img/baloven-paths.jpg" alt="Три входа на главной" loading="lazy"></div>
+    </div>
+    <div class="sol flip">
+      <div class="sol-text"><span class="case-n">02</span><h3>Пришёл за билетом, бронирует и ужин</h3><p>В каждой карточке события рядом с «Купить билет» стоит «Забронировать стол». Вечер на сцене приводит гостя за столик.</p></div>
+      <div class="shot"><img src="img/baloven-afisha.jpg" alt="Афиша с кнопками «Купить билет» и «Забронировать стол»" loading="lazy"></div>
+    </div>
+    <div class="sol">
+      <div class="sol-text"><span class="case-n">03</span><h3>Ланч на сегодня открывается сам</h3><p>Человек в обед видит меню именно этого дня. Не нужно листать и не нужно писать в директ «а что сегодня?».</p></div>
+      <div class="shot"><img src="img/baloven-lunch.jpg" alt="Бизнес-ланч с отмеченным сегодняшним днём" loading="lazy"></div>
+    </div>
+
+    <div class="proof">
+      <div class="proof-num"><b>3</b><span>недели</span></div>
+      <div class="proof-num"><b>55&nbsp;000&nbsp;₽</b><span>стоимость редизайна</span></div>
+      <div class="proof-num"><b>с 2024</b><span>работаем вместе</span></div>
+      <p>Фирменные цвета, шрифты и фото кафе я сохранила: гости узнают своё место, просто им стало удобнее. Клиент одобрил концепцию.</p>
+    </div>
+
+    <div class="gift">
+      <div>
+        <div class="up">Подарок</div>
+        <h3>Пришлите ссылку на ваш сайт</h3>
+        <p>Бесплатно покажу 3 места, где вы теряете клиентов.</p>
       </div>
-      <div class="case-now">
-        <div class="up">Стало</div>
-        <ul>
-          <li>У каждого гостя свой путь с первого экрана</li>
-          <li>Афиша с фильтрами и понятными датами</li>
-          <li>Бронь стола в каждой карточке события</li>
-        </ul>
-      </div>
-    </div>
-
-    <div class="case-feat">
-      <div class="case-feat-text"><span class="case-n">01</span><h3>Три пути с главной</h3><p>Гость сразу выбирает, зачем пришёл: вкусно поесть, сходить на вечер или устроить праздник. Каждая кнопка ведёт ровно туда, куда нужно.</p></div>
-      <div class="shot"><img src="img/baloven.jpg" alt="Главная нового сайта «Баловня»: три карточки «Вкусно поесть», «Сходить на вечер», «Устроить праздник»" loading="lazy"></div>
-    </div>
-    <div class="case-feat flip">
-      <div class="case-feat-text"><span class="case-n">02</span><h3>Афиша, где легко выбрать вечер</h3><p>Фильтры по форматам, дата и время крупно. В каждой карточке две кнопки: купить билет у организатора и забронировать стол в кафе.</p></div>
-      <div class="shot"><img src="img/baloven-afisha.jpg" alt="Афиша с фильтрами и кнопками «Купить билет» и «Забронировать стол»" loading="lazy"></div>
-    </div>
-    <div class="case-mini">
-      <div><span class="case-n">03</span><h3>Меню с ланчем на сегодня</h3><p>Бизнес-ланч сегодняшнего дня открывается сам, листать не нужно.</p></div>
-      <div><span class="case-n">04</span><h3>Банкеты отдельно</h3><p>Поводы, зал, этапы подготовки и заявка в одном месте.</p></div>
-      <div><span class="case-n">05</span><h3>Узнаваемый стиль</h3><p>Фирменные цвета, шрифты и фото кафе сохранила. Сайт новый, но свой.</p></div>
-    </div>
-
-    <div class="note"><p><b>Что это даёт кафе.</b> Сайт сам отвечает на главные вопросы гостя: что сегодня в меню, что на афише и как забронировать стол. Человек приходит уже с готовым решением.</p></div>
-
-    <div class="svc-cta">
-      <div><h3>Ваш сайт тоже устарел?</h3><p>Покажите его мне. Предложу, как обновить, чтобы клиентам было проще выбрать и записаться.</p></div>
-      <div class="actions"><a class="btn js-write" href="https://t.me/oksergeevadesign" target="_blank" rel="noopener">Написать ↗</a><a class="btn ghost" href="https://baloven-redesign.netlify.app" target="_blank" rel="noopener">Открыть концепцию ↗</a></div>
+      <a class="btn js-write" href="https://t.me/oksergeevadesign" target="_blank" rel="noopener">Прислать ссылку ↗</a>
     </div>
   </div>
 </dialog>
@@ -749,6 +765,21 @@ button.svc-card{font:inherit}
     });
   }
 
+  // шторка «было / стало»
+  document.querySelectorAll('[data-ba]').forEach(function(ba){
+    var r=ba.querySelector('.ba-range');
+    r.addEventListener('input',function(){ba.classList.remove('hint');ba.style.setProperty('--pos',r.value+'%')});
+  });
+  function baHint(d){
+    var ba=d.querySelector('[data-ba]'); if(!ba) return;
+    var r=ba.querySelector('.ba-range');
+    ba.classList.add('hint'); ba.style.setProperty('--pos','50%'); r.value=50;
+    setTimeout(function(){ba.style.setProperty('--pos','72%')},700);
+    setTimeout(function(){ba.style.setProperty('--pos','35%')},1600);
+    setTimeout(function(){ba.style.setProperty('--pos','50%')},2500);
+    setTimeout(function(){ba.classList.remove('hint')},3500);
+  }
+
   // окна
   var dock=document.querySelectorAll('.dock button');
   function mark(id){dock.forEach(function(b){b.classList.toggle('on',(b.dataset.open||b.dataset.dock)===id)})}
@@ -756,7 +787,7 @@ button.svc-card{font:inherit}
     b.addEventListener('click',function(){
       document.querySelectorAll('dialog[open]').forEach(function(d){d.close()});
       var d=document.getElementById(b.dataset.open); if(!d) return;
-      d.showModal(); replay(d); d.querySelector('.w-body').scrollTop=0; mark(d.id);
+      d.showModal(); replay(d); baHint(d); d.querySelector('.w-body').scrollTop=0; mark(d.id);
     });
   });
   document.querySelectorAll('dialog').forEach(function(d){
