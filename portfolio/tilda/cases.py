@@ -312,7 +312,7 @@ def case_baloven():
         gift('Пришлите ссылку на ваш сайт'),
     ]
     stagger(body)
-    return window('/05 · Баловень', body)
+    return window('/02 · Баловень', body)
 
 
 def wide_kit(colors_items, type_big, type_style, type_note, img_label, img_key, img_h):
@@ -349,7 +349,7 @@ def case_lara():
         gift('Пришлите ссылку на ваш сайт'),
     ]
     stagger(body)
-    return window('/06 · Lara Shell', body)
+    return window('/03 · Lara Shell', body)
 
 
 def case_scenar():
@@ -379,7 +379,7 @@ def case_scenar():
         gift('Пришлите ссылку на ваш сайт'),
     ]
     stagger(body)
-    return window('/07 · СКЭНАР-терапия', body)
+    return window('/04 · СКЭНАР-терапия', body)
 
 
 def case_nina():
@@ -438,7 +438,7 @@ def case_nina():
         gift('Пришлите ссылку на ваш сайт или Taplink'),
     ]
     stagger(body)
-    return window('/03 · Нина Евстафьева', body)
+    return window('/01 · Нина Евстафьева', body)
 
 
 if __name__ == '__main__':
