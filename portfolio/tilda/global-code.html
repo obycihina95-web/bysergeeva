@@ -95,6 +95,19 @@ a[href^="#skin-"].os-on{box-shadow:0 0 0 2px #FFF8C7,0 0 0 3.5px #24334C}
 .os-ping.os-live{animation:osPing 1.8s ease-out infinite}
 @keyframes osPing{0%{box-shadow:0 0 0 0 rgba(63,174,90,.5)}80%,100%{box-shadow:0 0 0 8px rgba(63,174,90,0)}}
 @media (prefers-reduced-motion:reduce){#os-boot *,.os-nudge .tn-atom,.os-sway .tn-atom,.os-ping,.os-scroll{animation:none!important;opacity:1!important;transform:none!important}}
+/* Телефон: окна на всю ширину экрана. Сетка Тильды 360/480/640 оставляла по бокам до 40px пустоты. */
+@media (max-width:639px){
+.t1093 .t396__artboard{padding-left:8px!important;padding-right:8px!important}
+.t1093 .t396__artboard>.t396__group{width:100%!important}
+.t1093 .t396__group:has(>.tn-molecule>.os-ba-knob){width:100%!important;height:auto!important;aspect-ratio:4/5}
+.t1093 .t396__group:has(>.tn-molecule>.os-ba-knob)>.tn-molecule>.tn-elem[data-elem-type="image"]{width:100%!important;height:100%!important}
+.t1093 .t396__group:has(>.tn-molecule>.os-ba-knob)>.tn-molecule>.tn-elem[data-elem-type="image"]+.tn-elem{left:auto!important;right:12px}
+.t1093 .t396__group:has(>.tn-molecule>.os-ba-knob)>.tn-molecule>.t396__group{height:100%!important}
+/* без !important, чтобы ползунок «было / стало» мог двигать их своими стилями */
+.t1093 .t396__group:has(>.tn-molecule>.os-ba-knob)>.tn-molecule>.t396__group:not(#os1):not(#os2){width:50%}
+.t1093 .os-ba-line:not(#os1):not(#os2){left:calc(50% - 1px);height:100%}
+.t1093 .os-ba-knob:not(#os1):not(#os2){left:calc(50% - 20px);top:calc(50% - 20px)}
+}
 </style>
 <div id="os-clock"></div>
 <div id="os-boot" aria-hidden="true"><div class="os-in"><div class="os-mono">OS</div><b>OKSANA SERGEEVA</b><small>Сайты для вашего дела</small><div class="os-loader"></div><small class="os-ready">Рабочий стол готов</small></div></div>
