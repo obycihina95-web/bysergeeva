@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex">
+<title>GeLatte — коммерческое предложение</title>
+<style>
+:root{--ink:#1d1a19;--mut:#5b5552;--line:#e4dfda;--bg:#faf8f6;--ac:#B3182A}
+*{box-sizing:border-box}
+body{margin:0;font:18px/1.6 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;color:var(--ink);background:var(--bg)}
+.w{max-width:1120px;margin:auto;padding:0 24px}
+header{padding:64px 0 40px}
+h1{font-size:clamp(36px,6vw,68px);line-height:1.05;margin:0 0 16px;letter-spacing:-.02em;text-wrap:balance}
+header p{max-width:52ch;color:var(--mut);margin:0}
+h2{font-size:clamp(26px,3.6vw,38px);line-height:1.15;margin:0 0 20px;text-wrap:balance}
+section{padding:44px 0;border-top:1px solid var(--line)}
+.inc{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:28px 36px;padding:0;margin:0;list-style:none}
+.inc b{display:block;margin-bottom:4px}.inc span{color:var(--mut);font-size:16px}
+.cc{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:28px}
+.card{background:#fff;border:1px solid var(--line);border-radius:14px;overflow:hidden;display:flex;flex-direction:column}
+.card img{width:100%;height:auto;display:block;aspect-ratio:16/10;object-fit:cover;object-position:top;border-bottom:1px solid var(--line)}
+.card div{padding:22px 22px 24px;display:flex;flex-direction:column;gap:12px;flex:1}
+.card h3{margin:0;font-size:24px}.card p{margin:0;color:var(--mut);font-size:16px;flex:1}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:0 22px;border-radius:99px;background:var(--ink);color:#fff;text-decoration:none;font-weight:600;font-size:16px;align-self:flex-start;transition:background-color .18s ease-out}
+@media(hover:hover){.btn:hover{background:var(--ac)}}
+.btn:focus-visible{outline:3px solid var(--ac);outline-offset:3px}
+.note{color:var(--mut);font-size:16px;max-width:62ch}
+ol{padding-left:22px;margin:0;max-width:62ch}ol li{margin-bottom:10px}
+footer{padding:32px 0 56px;color:var(--mut);font-size:15px;border-top:1px solid var(--line)}
+@media(max-width:600px){body{font-size:17px}header{padding:40px 0 28px}.btn{width:100%}}
+</style>
+</head>
+<body>
+<header><div class="w">
+<h1>Новый сайт для кафе GeLatte</h1>
+<p>Коммерческое предложение и три варианта дизайна главной страницы. Каждый вариант можно открыть и пролистать как настоящий сайт: на компьютере и на телефоне.</p>
+</div></header>
+<main>
+<section><div class="w">
+<h2>Что получает кафе</h2>
+<ul class="inc">
+<li><b>Меню целиком</b><span>Все 63 позиции банкетного меню с составом, выходом и ценой, по разделам.</span></li>
+<li><b>Банкеты</b><span>Два зала, минимальная сумма закрытия, условия сервисного сбора и кнопка «позвонить».</span></li>
+<li><b>Фото и команда</b><span>Галерея с увеличением снимков и блок «Команда».</span></li>
+<li><b>Контакты</b><span>Адрес, телефон, почта и маршрут на карте.</span></li>
+<li><b>Удобство на телефоне</b><span>Страница одинаково читается на любом экране, крупные кнопки, быстрая загрузка.</span></li>
+</ul>
+</div></section>
+<section><div class="w">
+<h2>Три концепции</h2>
+<div class="cc">
+<article class="card"><img src="screens/1-top.jpg" width="1440" height="900" alt="Первый экран концепции «Скатерть»"><div><h3>1. Скатерть</h3><p>Красно-белая клетка, как на столах в зале. Белое полотно, крупные подписи, меню во вкладках.</p><a class="btn" href="concept-1/index.html">Открыть концепцию</a></div></article>
+<article class="card"><img src="screens/2-top.jpg" width="1440" height="900" alt="Первый экран концепции «Грифельная доска»"><div><h3>2. Грифельная доска</h3><p>Меню как на доске у входа: мел, рукописные подписи, вся карта видна сразу в две колонки.</p><a class="btn" href="concept-2/index.html">Открыть концепцию</a></div></article>
+<article class="card"><img src="screens/3-top.jpg" width="1440" height="900" alt="Первый экран концепции «Гирлянда»"><div><h3>3. Гирлянда</h3><p>Праздничные флажки и яркие цветные блоки. Меню цветными вкладками, акцент на банкеты.</p><a class="btn" href="concept-3/index.html">Открыть концепцию</a></div></article>
+</div>
+</div></section>
+<section><div class="w">
+<h2>Что дальше</h2>
+<ol>
+<li>Вы выбираете концепцию (или берём лучшее из нескольких).</li>
+<li>Заменяем временные фото на оригиналы без подписей и добавляем фото команды.</li>
+<li>Уточняем меню, цены и условия банкетов.</li>
+<li>Запускаем сайт на домене кафе.</li>
+</ol>
+<p class="note" style="margin-top:20px">Состав и актуальность меню, цены и условия банкетов подтверждает администратор кафе.</p>
+</div></section>
+</main>
+<footer><div class="w">Оксана Сергеева, веб-дизайнер, Новосибирск</div></footer>
+</body>
+</html>
